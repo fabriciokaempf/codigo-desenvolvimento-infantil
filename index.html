@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Código para Destravar o Desenvolvimento Infantil · Maria Izabel da Rosa</title>
 <meta name="description" content="Destrave o desenvolvimento físico, emocional e cognitivo do seu filho de 0 a 6 anos com minutos de presença de verdade por dia. Método de Maria Izabel da Rosa, terapeuta da infância e família.">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --verde: #2d4a3e;
     --verde-e: #1e3229;
+    --verde-ee: #16261e;
     --verde-c: #4a7c6b;
     --verde-s: #8fb8a8;
     --creme: #f5f0e8;
@@ -17,11 +18,12 @@
     --terra: #c4956a;
     --terra-s: #e8c9a0;
     --off: #faf8f3;
-    --txt: #1a2820;
-    --txt2: #4a5c53;
+    --txt: #1f2d26;
+    --txt2: #5a6b62;
     --mostarda: #b8912e;
     --cta: #c05621;
     --cta-h: #a8481a;
+    --ouro: #d4af6a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -29,238 +31,427 @@
     font-family: 'Instrument Sans', system-ui, sans-serif;
     background: var(--off);
     color: var(--txt);
-    line-height: 1.75;
+    line-height: 1.8;
     font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  section { padding: 56px 20px; }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  h1, h2 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.2; }
-  h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); color: var(--verde); margin-bottom: 22px; font-weight: 700; }
-  p { margin-bottom: 16px; }
+  section { padding: 84px 22px; position: relative; }
+  .wrap { max-width: 780px; margin: 0 auto; position: relative; z-index: 2; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.15; }
+  h2 { font-size: clamp(1.9rem, 4.4vw, 2.7rem); color: var(--verde); margin-bottom: 26px; font-weight: 600; letter-spacing: -0.5px; }
+  h2 em { font-style: italic; color: var(--terra); }
+  p { margin-bottom: 17px; }
   .destaque { font-weight: 700; }
-  .tag {
+  .grande { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; line-height: 1.35; color: var(--verde); }
+
+  /* KICKER */
+  .kicker {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 2.5px;
+    font-size: 0.7rem;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
+    color: var(--mostarda);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .kicker::before { content: ''; width: 34px; height: 1px; background: var(--terra); flex: none; }
+  .kicker.centro { justify-content: center; }
+  .kicker.centro::after { content: ''; width: 34px; height: 1px; background: var(--terra); flex: none; }
+
+  /* REVEAL */
+  .rv { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .rv.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+  /* TOPBAR */
+  .topbar {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(22,38,30,0.92); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 22px; gap: 12px;
+  }
+  .topbar .marca {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.02rem;
+    color: var(--creme); letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .topbar .marca span { color: var(--ouro); font-style: italic; }
+  .topbar a.mini {
+    background: var(--cta); color: #fff; text-decoration: none; font-weight: 600;
+    font-size: 0.8rem; padding: 8px 18px; border-radius: 30px; white-space: nowrap; flex: none;
   }
 
   /* HERO */
-  .hero { background: var(--verde); color: var(--creme); text-align: center; padding: 56px 20px 48px; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ''; position: absolute; width: 520px; height: 520px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.06); top: -220px; right: -160px;
+  .hero {
+    background:
+      radial-gradient(ellipse 90% 70% at 50% -10%, rgba(74,124,107,0.55), transparent 60%),
+      linear-gradient(170deg, var(--verde-e) 0%, var(--verde) 58%, #24413a 100%);
+    color: var(--creme);
+    text-align: center;
+    padding: 84px 22px 96px;
+    overflow: hidden;
   }
-  .hero::after {
-    content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.05); bottom: -200px; left: -140px;
+  .mandala {
+    position: absolute; left: 50%; top: -320px; transform: translateX(-50%);
+    width: 980px; height: 980px; opacity: 0.5; pointer-events: none; z-index: 1;
   }
-  .hero .tag { color: var(--verde-s); display: block; margin-bottom: 20px; }
+  .hero .wrap { max-width: 860px; }
+  .hero .pre {
+    display: inline-block;
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--terra-s); border: 1px solid rgba(232,201,160,0.35); border-radius: 40px;
+    padding: 9px 22px; margin-bottom: 30px; background: rgba(0,0,0,0.14);
+  }
   .hero h1 {
-    font-size: clamp(1.9rem, 5vw, 3rem);
-    font-weight: 700; margin-bottom: 18px; letter-spacing: -0.5px;
+    font-size: clamp(2.1rem, 5.6vw, 3.6rem);
+    font-weight: 600; margin-bottom: 22px; letter-spacing: -1px; line-height: 1.12;
   }
-  .hero h1 em { font-style: italic; color: var(--terra-s); }
-  .hero .sub { max-width: 640px; margin: 0 auto 30px; font-size: 1.05rem; color: var(--creme-e); }
+  .hero h1 em { font-style: italic; color: var(--ouro); }
+  .hero .sub { max-width: 660px; margin: 0 auto 40px; font-size: 1.08rem; color: rgba(245,240,232,0.85); }
 
-  /* VSL */
-  .video-frase { font-weight: 600; color: var(--creme); max-width: 640px; margin: 0 auto 18px; font-size: 1.02rem; }
+  .video-frase {
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+    color: var(--terra-s); max-width: 620px; margin: 0 auto 20px; font-size: 1.25rem; line-height: 1.4;
+  }
+  .video-shell { max-width: 720px; margin: 0 auto; position: relative; }
+  .video-shell::before {
+    content: ''; position: absolute; inset: -14px;
+    border: 1px solid rgba(212,175,106,0.4); border-radius: 22px;
+  }
   .video-box {
-    position: relative; max-width: 680px; margin: 0 auto;
-    aspect-ratio: 16/9; border-radius: 14px; overflow: hidden;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.35); background: #000;
+    position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5); background: #000;
   }
   .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .video-legenda { font-size: 0.85rem; color: var(--verde-s); max-width: 600px; margin: 14px auto 0; }
+  .video-legenda { font-size: 0.84rem; color: var(--verde-s); max-width: 560px; margin: 26px auto 0; }
 
-  /* CTA */
+  /* BOTÕES */
   .btn {
-    display: inline-block; background: var(--cta); color: #fff; text-decoration: none;
-    font-weight: 700; font-size: 1.05rem; text-align: center;
-    padding: 18px 34px; border-radius: 50px; letter-spacing: 0.3px;
-    box-shadow: 0 8px 24px rgba(192,86,33,0.35);
-    transition: transform 0.15s ease, background 0.15s ease;
+    display: inline-block; position: relative;
+    background: linear-gradient(180deg, #d3652c, var(--cta));
+    color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 1.02rem; text-align: center;
+    padding: 19px 40px; border-radius: 60px; letter-spacing: 0.4px;
+    box-shadow: 0 12px 30px rgba(192,86,33,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
     max-width: 100%;
   }
-  .btn:hover { background: var(--cta-h); transform: translateY(-2px); }
-  .btn-area { text-align: center; margin-top: 30px; }
-  .btn-nota { font-size: 0.82rem; color: var(--txt2); margin-top: 12px; }
-  .hero .btn-nota { color: var(--verde-s); }
+  .btn::after { content: ' →'; }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(192,86,33,0.5), inset 0 1px 0 rgba(255,255,255,0.25); }
+  .btn-area { text-align: center; margin-top: 34px; }
+  .btn-nota { font-size: 0.82rem; color: var(--txt2); margin-top: 14px; }
+  .btn-nota.clara { color: var(--verde-s); }
+  .seguro {
+    display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+    margin-top: 18px; font-size: 0.78rem; color: var(--verde-s);
+  }
+  .seguro span::before { content: '✓ '; color: var(--terra-s); }
 
-  /* SEÇÕES ALTERNADAS */
+  /* DIVISORES ORGÂNICOS */
+  .curva { display: block; width: 100%; height: 70px; margin-bottom: -1px; }
+
+  /* SEÇÕES */
   .sec-creme { background: var(--creme); }
-  .sec-verde { background: var(--verde-e); color: var(--creme-e); }
+  .sec-verde { background: linear-gradient(165deg, var(--verde-e), var(--verde) 130%); color: rgba(245,240,232,0.88); }
   .sec-verde h2 { color: var(--terra-s); }
   .sec-verde .destaque { color: #fff; }
+  .sec-verde .grande { color: var(--terra-s); }
 
-  /* LISTA DE DORES */
-  .dores { list-style: none; margin: 24px 0; }
+  /* DORES */
+  .dores { list-style: none; margin: 30px 0; }
   .dores li {
-    padding: 14px 0 14px 40px; position: relative;
-    border-bottom: 1px solid var(--creme-e);
+    padding: 18px 20px 18px 58px; position: relative; margin-bottom: 12px;
+    background: #fff; border-radius: 14px; border: 1px solid var(--creme-e);
+    box-shadow: 0 3px 14px rgba(45,74,62,0.05);
   }
   .dores li::before {
-    content: '✓'; position: absolute; left: 6px; top: 14px;
-    width: 24px; height: 24px; border-radius: 50%;
-    background: var(--verde); color: var(--creme);
-    font-size: 0.8rem; font-weight: 700; text-align: center; line-height: 24px;
+    content: ''; position: absolute; left: 20px; top: 22px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--verde-c), var(--verde));
+    box-shadow: 0 0 0 4px rgba(143,184,168,0.25);
+  }
+  .dores li::after {
+    content: '✓'; position: absolute; left: 25px; top: 18px;
+    color: var(--creme); font-size: 0.7rem; font-weight: 700;
   }
 
-  /* CARDS PILARES */
-  .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 28px 0; }
+  /* QUOTE CARD */
+  .frase-caixa {
+    background: #fff; border-radius: 18px; padding: 34px 38px; margin: 34px 0;
+    border-left: 5px solid var(--terra);
+    box-shadow: 0 10px 34px rgba(45,74,62,0.09);
+    font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600;
+    line-height: 1.4; color: var(--verde);
+  }
+
+  /* PILARES */
+  .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 16px; margin: 34px 0; counter-reset: pilar; }
   .pilar {
-    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
-    padding: 20px; box-shadow: 0 2px 8px rgba(45,74,62,0.06);
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 16px;
+    padding: 26px 22px 22px; position: relative; overflow: hidden;
+    box-shadow: 0 4px 18px rgba(45,74,62,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .pilar .num {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700;
-    color: var(--terra); line-height: 1; margin-bottom: 8px;
+  .pilar:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(45,74,62,0.12); }
+  .pilar::before {
+    counter-increment: pilar; content: counter(pilar, decimal-leading-zero);
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 2px;
+    color: var(--mostarda); display: block; margin-bottom: 10px;
   }
-  .pilar h3 { color: var(--verde); font-size: 1.04rem; margin-bottom: 6px; }
-  .pilar p { font-size: 0.9rem; color: var(--txt2); margin: 0; }
+  .pilar::after {
+    content: ''; position: absolute; top: -34px; right: -34px; width: 92px; height: 92px;
+    border-radius: 50%; border: 1.5px solid var(--creme-e);
+  }
+  .pilar h3 { color: var(--verde); font-size: 1.35rem; margin-bottom: 8px; font-weight: 600; }
+  .pilar p { font-size: 0.9rem; color: var(--txt2); margin: 0; line-height: 1.65; }
 
   /* MÓDULOS */
   .modulo {
-    background: #fff; border: 1px solid var(--creme-e); border-radius: 14px;
-    padding: 26px 28px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(45,74,62,0.05);
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 18px;
+    padding: 32px 34px; margin-bottom: 18px; position: relative;
+    box-shadow: 0 4px 20px rgba(45,74,62,0.06);
   }
-  .modulo .tag { color: var(--mostarda); }
-  .modulo h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; color: var(--verde); margin: 6px 0 4px; }
-  .modulo .desc { font-style: italic; color: var(--txt2); font-size: 0.92rem; margin-bottom: 12px; }
+  .modulo .mtag {
+    font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--mostarda); background: #f7efdc; border-radius: 30px; padding: 5px 14px; display: inline-block;
+  }
+  .modulo h3 { font-size: 1.65rem; color: var(--verde); margin: 12px 0 4px; font-weight: 600; }
+  .modulo .desc { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--terra); font-size: 1.1rem; margin-bottom: 16px; }
   .modulo ul { list-style: none; }
-  .modulo li { padding: 6px 0 6px 26px; position: relative; font-size: 0.95rem; }
-  .modulo li::before { content: '›'; position: absolute; left: 8px; color: var(--terra); font-weight: 700; }
+  .modulo li { padding: 8px 0 8px 30px; position: relative; font-size: 0.95rem; border-top: 1px dashed var(--creme-e); }
+  .modulo li:first-child { border-top: 0; }
+  .modulo li::before { content: '◆'; position: absolute; left: 6px; top: 9px; color: var(--terra); font-size: 0.6rem; }
 
   /* FASCINAÇÕES */
-  .fasc { list-style: none; margin: 24px 0; columns: 1; }
-  .fasc li { padding: 10px 0 10px 30px; position: relative; break-inside: avoid; }
-  .fasc li::before { content: '+'; position: absolute; left: 4px; top: 8px; color: var(--mostarda); font-weight: 700; font-size: 1.2rem; }
-  @media (min-width: 700px) { .fasc { columns: 2; column-gap: 40px; } }
+  .fasc { list-style: none; margin: 30px 0; }
+  .fasc li { padding: 13px 0 13px 42px; position: relative; border-bottom: 1px solid var(--creme-e); font-size: 0.97rem; }
+  .fasc li::before {
+    content: '+'; position: absolute; left: 0; top: 12px;
+    width: 26px; height: 26px; border-radius: 50%; text-align: center; line-height: 25px;
+    background: #f7efdc; color: var(--mostarda); font-weight: 700; font-size: 1rem;
+  }
+  @media (min-width: 720px) {
+    .fasc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; }
+  }
 
   /* BIO */
+  .bio-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: start; }
+  @media (min-width: 760px) { .bio-grid { grid-template-columns: 240px 1fr; } }
   .bio-foto {
-    width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 20px;
-    background: var(--verde); color: var(--creme);
+    width: 210px; height: 260px; border-radius: 110px 110px 18px 18px; margin: 0 auto;
+    background: linear-gradient(160deg, var(--verde-c), var(--verde-e));
+    color: var(--creme); position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600;
-    border: 4px solid var(--terra-s);
+    font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 600;
+    border: 5px solid #fff; box-shadow: 0 16px 44px rgba(45,74,62,0.22);
+  }
+  .bio-foto::after {
+    content: 'foto da Maria Izabel'; position: absolute; bottom: 10px; left: 0; right: 0;
+    font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(245,240,232,0.55); text-align: center;
   }
   .citacao {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: 1.5rem; color: var(--verde); text-align: center;
-    max-width: 560px; margin: 28px auto; line-height: 1.4;
+    font-size: clamp(1.5rem, 3.4vw, 1.9rem); color: var(--verde); text-align: center;
+    max-width: 620px; margin: 44px auto 0; line-height: 1.4; position: relative; padding-top: 34px;
   }
-  .citacao span { display: block; font-family: 'Instrument Sans', sans-serif; font-style: normal; font-size: 0.85rem; color: var(--txt2); margin-top: 10px; }
+  .citacao::before {
+    content: '“'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    font-size: 4.6rem; color: var(--terra-s); line-height: 1;
+  }
+  .citacao span { display: block; font-family: 'DM Mono', monospace; font-style: normal; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--txt2); margin-top: 16px; }
 
   /* CASOS */
   .caso {
-    background: #fff; border-left: 4px solid var(--terra); border-radius: 0 14px 14px 0;
-    padding: 26px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(45,74,62,0.05);
+    background: #fff; border-radius: 18px; padding: 36px 38px 30px; margin-bottom: 22px;
+    position: relative; box-shadow: 0 6px 26px rgba(45,74,62,0.07); border: 1px solid var(--creme-e);
   }
-  .caso h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--verde); margin-bottom: 12px; }
-  .disclaimer { font-size: 0.8rem; color: var(--txt2); font-style: italic; }
+  .caso::before {
+    content: '“'; position: absolute; top: 6px; right: 26px;
+    font-family: 'Cormorant Garamond', serif; font-size: 5.4rem; color: var(--creme-e); line-height: 1;
+  }
+  .caso h3 { font-size: 1.55rem; color: var(--verde); margin-bottom: 14px; font-weight: 600; }
+  .caso p:last-of-type { margin-bottom: 0; }
+  .caso .resultado {
+    background: var(--creme); border-radius: 12px; padding: 14px 20px; margin-top: 18px;
+    font-size: 0.92rem; color: var(--verde); font-weight: 600;
+  }
+  .disclaimer { font-size: 0.78rem; color: var(--txt2); font-style: italic; margin-top: 20px; }
 
   /* IMAGINE */
-  .imagine-lista { list-style: none; margin: 24px 0; }
-  .imagine-lista li { padding: 12px 0 12px 38px; position: relative; }
+  .imagine-lista { list-style: none; margin: 30px 0; }
+  .imagine-lista li {
+    padding: 16px 0 16px 52px; position: relative;
+    border-bottom: 1px solid rgba(245,240,232,0.12);
+  }
   .imagine-lista li::before {
-    content: '🌱'; position: absolute; left: 0; top: 12px; font-size: 1.1rem;
+    content: ''; position: absolute; left: 4px; top: 20px;
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1.5px solid var(--terra-s);
+  }
+  .imagine-lista li::after {
+    content: ''; position: absolute; left: 12px; top: 24px;
+    width: 10px; height: 14px; background: var(--terra-s);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    border-radius: 2px;
   }
 
   /* OFERTA */
   .stack-item {
-    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
-    padding: 22px 26px; margin-bottom: 14px;
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 16px;
+    padding: 26px 30px; margin-bottom: 14px; position: relative;
+    box-shadow: 0 4px 18px rgba(45,74,62,0.05);
   }
-  .stack-item h3 { color: var(--verde); font-size: 1.08rem; margin-bottom: 6px; }
+  .stack-item h3 { color: var(--verde); font-size: 1.4rem; margin-bottom: 6px; font-weight: 600; }
   .stack-item p { font-size: 0.94rem; margin-bottom: 6px; }
-  .stack-item .valor { font-size: 0.82rem; color: var(--mostarda); font-weight: 600; }
-  .stack-item.bonus { border: 2px dashed var(--terra); background: #fdf9f2; }
+  .stack-item .valor { font-family: 'DM Mono', monospace; font-size: 0.74rem; letter-spacing: 0.5px; color: var(--mostarda); }
+  .stack-item.bonus { border: 2px dashed var(--terra); background: linear-gradient(180deg, #fdf9f2, #fbf3e4); }
+  .stack-item.bonus .btag {
+    position: absolute; top: -13px; left: 26px;
+    background: var(--terra); color: #fff; font-family: 'DM Mono', monospace;
+    font-size: 0.64rem; letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 30px;
+  }
   .preco-box {
-    background: var(--verde); color: var(--creme); border-radius: 18px;
-    text-align: center; padding: 40px 24px; margin-top: 30px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212,175,106,0.18), transparent 55%),
+      linear-gradient(170deg, var(--verde-e), var(--verde));
+    color: var(--creme); border-radius: 26px;
+    text-align: center; padding: 54px 28px 48px; margin-top: 36px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 70px rgba(30,50,41,0.35);
   }
-  .preco-box .de { font-size: 0.95rem; color: var(--verde-s); }
+  .preco-box::before, .preco-box::after {
+    content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(212,175,106,0.18); pointer-events: none;
+  }
+  .preco-box::before { width: 420px; height: 420px; top: -190px; left: -140px; }
+  .preco-box::after { width: 340px; height: 340px; bottom: -170px; right: -120px; }
+  .preco-box .de { font-size: 0.95rem; color: var(--verde-s); max-width: 460px; margin: 0 auto 6px; }
+  .preco-box .riscado { text-decoration: line-through; color: rgba(245,240,232,0.5); }
   .preco-box .parcela {
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 7vw, 3.6rem);
-    font-weight: 700; line-height: 1.1; margin: 8px 0 2px;
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.9rem, 8vw, 4.4rem);
+    font-weight: 700; line-height: 1.05; margin: 10px 0 2px; color: #fff;
   }
-  .preco-box .avista { font-size: 1rem; color: var(--creme-e); margin-bottom: 8px; }
-  .preco-box .contexto { font-size: 0.9rem; color: var(--verde-s); max-width: 420px; margin: 0 auto 22px; }
+  .preco-box .parcela small { font-size: 0.4em; font-weight: 500; color: var(--terra-s); }
+  .preco-box .avista { font-size: 1rem; color: var(--creme-e); margin-bottom: 10px; }
+  .preco-box .contexto { font-size: 0.9rem; color: var(--verde-s); max-width: 430px; margin: 0 auto 28px; }
 
   /* GARANTIA */
   .selo {
-    width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px;
-    background: var(--terra-s); color: var(--verde-e);
+    width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 26px; position: relative;
+    background: radial-gradient(circle at 35% 30%, #f2ddba, var(--terra-s));
+    color: var(--verde-e);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    font-weight: 700; border: 3px dashed var(--terra);
+    font-weight: 700; box-shadow: 0 14px 36px rgba(196,149,106,0.35);
   }
-  .selo .n { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; line-height: 1; }
-  .selo .t { font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; }
+  .selo::before { content: ''; position: absolute; inset: 8px; border-radius: 50%; border: 1.5px dashed var(--verde); opacity: 0.5; }
+  .selo .n { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; line-height: 1; }
+  .selo .t { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; }
 
-  /* OBJEÇÕES E FAQ */
+  /* ACORDEÃO */
   details {
-    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
-    padding: 18px 22px; margin-bottom: 12px;
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 14px;
+    padding: 20px 26px; margin-bottom: 12px; transition: box-shadow 0.2s ease;
   }
+  details[open] { box-shadow: 0 10px 30px rgba(45,74,62,0.08); }
   details summary {
-    cursor: pointer; font-weight: 600; color: var(--verde);
-    list-style: none; position: relative; padding-right: 30px;
+    cursor: pointer; font-weight: 600; color: var(--verde); font-size: 1rem;
+    list-style: none; position: relative; padding-right: 40px;
   }
-  details summary::after { content: '+'; position: absolute; right: 4px; top: 0; color: var(--terra); font-size: 1.3rem; font-weight: 700; }
-  details[open] summary::after { content: '−'; }
-  details p { margin: 12px 0 0; font-size: 0.95rem; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '+'; position: absolute; right: 0; top: -2px;
+    width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 27px;
+    background: var(--creme); color: var(--terra); font-size: 1.2rem; font-weight: 700;
+    transition: transform 0.25s ease;
+  }
+  details[open] summary::after { content: '−'; transform: rotate(180deg); }
+  details p { margin: 14px 0 0; font-size: 0.94rem; color: var(--txt); }
 
   /* FINAL */
-  .ps { background: var(--creme); border-radius: 14px; padding: 24px 28px; margin-top: 24px; font-size: 0.96rem; }
+  .ps {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(212,175,106,0.25);
+    border-radius: 16px; padding: 28px 32px; margin-top: 30px; font-size: 0.95rem;
+  }
 
   footer {
-    background: var(--verde-e); color: var(--verde-s);
-    text-align: center; padding: 36px 20px; font-size: 0.8rem; line-height: 1.7;
+    background: var(--verde-ee); color: var(--verde-s);
+    text-align: center; padding: 44px 22px; font-size: 0.78rem; line-height: 1.8;
   }
+  footer .fmarca { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--creme-e); margin-bottom: 8px; }
   footer a { color: var(--creme-e); }
 
   /* STICKY CTA MOBILE */
   .sticky-cta {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-    background: rgba(30,50,41,0.97); padding: 10px 14px; text-align: center;
-    display: none; box-shadow: 0 -4px 18px rgba(0,0,0,0.25);
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+    background: rgba(22,38,30,0.96); backdrop-filter: blur(8px);
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); text-align: center;
+    display: none; box-shadow: 0 -6px 22px rgba(0,0,0,0.3);
   }
   .sticky-cta a {
-    display: block; background: var(--cta); color: #fff; text-decoration: none;
-    font-weight: 700; font-size: 0.95rem; padding: 13px 10px; border-radius: 40px;
+    display: block; background: linear-gradient(180deg, #d3652c, var(--cta)); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 0.92rem; padding: 14px 10px; border-radius: 50px;
   }
   @media (max-width: 720px) {
     .sticky-cta { display: block; }
-    body { padding-bottom: 70px; }
-    section { padding: 44px 18px; }
+    body { padding-bottom: 76px; }
+    section { padding: 60px 20px; }
+    .topbar a.mini { display: none; }
+    .modulo, .caso { padding: 26px 24px; }
   }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="marca">Código para Destravar o <span>Desenvolvimento Infantil</span></div>
+  <a class="mini" href="https://pay.hotmart.com/H100415402M">Quero começar</a>
+</div>
+
 <!-- HERO + VSL -->
 <header class="hero">
+  <svg class="mandala" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#d4af6a" stroke-opacity="0.22">
+      <circle cx="400" cy="400" r="390" />
+      <circle cx="400" cy="400" r="330" />
+      <circle cx="400" cy="400" r="270" stroke-dasharray="3 9" />
+      <circle cx="400" cy="400" r="210" />
+      <circle cx="400" cy="400" r="150" stroke-dasharray="3 9" />
+      <circle cx="400" cy="400" r="95" />
+    </g>
+    <g stroke="#8fb8a8" stroke-opacity="0.18">
+      <path d="M400 10 L400 790 M10 400 L790 400 M124 124 L676 676 M676 124 L124 676" />
+    </g>
+  </svg>
   <div class="wrap">
-    <span class="tag">Para mães de crianças de 0 a 6 anos que sentem que algo está travando o desenvolvimento do filho</span>
+    <span class="pre">Para mães de crianças de 0 a 6 anos que sentem que algo está travando o desenvolvimento do filho</span>
     <h1>Existe algo <em>invisível</em> travando o desenvolvimento do seu filho. E ninguém te ensinou a olhar para esse lugar.</h1>
     <p class="sub">Assista ao vídeo abaixo e descubra como destravar o desenvolvimento físico, emocional e cognitivo do seu filho com minutos de presença de verdade por dia. Sem telas, sem brinquedos caros e sem precisar de mais tempo (que você não tem).</p>
     <p class="video-frase">Aperte o play e descubra o que a ciência de Harvard revelou sobre o fator número 1 do desenvolvimento infantil. Não é escolaridade, não é renda, não é brinquedo. E você já tem esse fator dentro de você.</p>
-    <div class="video-box">
-      <iframe src="https://www.youtube-nocookie.com/embed/kcGUJs6GQHI?rel=0&modestbranding=1" title="Vídeo: Como destravar o desenvolvimento do seu filho" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="video-shell">
+      <div class="video-box">
+        <iframe src="https://www.youtube-nocookie.com/embed/kcGUJs6GQHI?rel=0&modestbranding=1" title="Vídeo: Como destravar o desenvolvimento do seu filho" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
     <p class="video-legenda">Assista com som. Nos primeiros minutos, Maria Izabel revela por que a birra do seu filho pode ser, na verdade, um pedido de conexão.</p>
     <div class="btn-area">
       <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
-      <p class="btn-nota">12x de R$ 72,09 · Garantia incondicional de 7 dias · Acesso imediato</p>
+      <div class="seguro">
+        <span>12x de R$ 72,09</span>
+        <span>Garantia incondicional de 7 dias</span>
+        <span>Acesso imediato</span>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- DORES -->
 <section>
-  <div class="wrap">
-    <h2>Me diz se você se reconhece em alguma dessas frases...</h2>
+  <div class="wrap rv">
+    <p class="kicker">Você não está sozinha</p>
+    <h2>Me diz se você se reconhece em <em>alguma dessas frases...</em></h2>
     <p>Essa página é para você que...</p>
     <ul class="dores">
       <li>Está fisicamente ao lado do seu filho, mas sente que está <span class="destaque">presente de corpo e ausente de verdade</span>. Você responde "hum, que legal" sem nem olhar para o desenho que ele mostrou.</li>
@@ -273,21 +464,22 @@
     </ul>
     <p>Se você balançou a cabeça em pelo menos uma dessas frases, respira. Continua lendo.</p>
     <p>Porque eu preciso te contar uma coisa que ninguém teve a coragem de te dizer:</p>
-    <p class="destaque" style="font-size:1.15rem;">O problema não é você ser uma mãe ruim. O problema é que você está olhando para o lugar errado.</p>
+    <div class="frase-caixa">O problema não é você ser uma mãe ruim. O problema é que você está olhando para o lugar errado.</div>
   </div>
 </section>
 
 <!-- MECANISMO DO PROBLEMA -->
 <section class="sec-verde">
-  <div class="wrap">
+  <div class="wrap rv">
+    <p class="kicker">O mecanismo invisível</p>
     <h2>A verdade desconfortável que nenhum pediatra te contou</h2>
     <p>Vou te fazer uma pergunta direta.</p>
     <p>Quantas horas você passou ao lado do seu filho ontem?</p>
     <p>Agora a pergunta que dói: <span class="destaque">quantos minutos você esteve com ele de verdade?</span> Sem celular na mão. Sem a cabeça na lista de tarefas. Sem responder no automático.</p>
     <p>Se você travou nessa segunda pergunta, você acabou de encontrar o mecanismo invisível que está travando o desenvolvimento do seu filho.</p>
-    <p>O nome dele é <span class="destaque">Presença Parcial</span>.</p>
+    <p class="grande">O nome dele é Presença Parcial.</p>
     <p>Presença Parcial é quando o seu corpo está na sala, mas a sua atenção está no e-mail, na louça, na preocupação com a conta que vence amanhã. E aqui está o ponto que muda tudo:</p>
-    <p class="destaque" style="font-size:1.15rem;">Seu filho percebe. Sempre.</p>
+    <p class="grande">Seu filho percebe. Sempre.</p>
     <p>O cérebro infantil é uma máquina de detectar conexão. Quando a criança sente que não tem a sua atenção emocional, ela faz a única coisa que sabe fazer: ela testa, ela grita, ela faz birra, ela se agita. Não porque é "difícil". Mas porque está tentando se conectar com você do único jeito que consegue.</p>
     <p>A birra que te esgota pode ser, na verdade, um pedido de socorro por conexão.</p>
     <p>E tem mais. A ciência é brutal nesse ponto:</p>
@@ -296,7 +488,7 @@
     <p>Esse mesmo campo de pesquisa revelou que micromomentos de conexão ativam as áreas cerebrais da linguagem, da empatia e da autorregulação. E o contrário também é verdade: <span class="destaque">quando a criança percebe que não tem a atenção emocional do adulto, o cérebro dela literalmente desliga o modo aprendizado.</span></p>
     <p>Leia essa última frase de novo.</p>
     <p>Você pode comprar o brinquedo educativo mais caro da loja. Pode matricular na melhor escolinha. Pode passar o dia inteiro no mesmo cômodo que seu filho.</p>
-    <p>Se a presença for parcial, <span class="destaque">brincadeira sem vínculo é só barulho.</span></p>
+    <p class="grande">Se a presença for parcial, brincadeira sem vínculo é só barulho.</p>
     <p>E a ausência custa caro. Custa em fala atrasada. Custa em birras que não acabam. Custa em uma criança grudada na tela porque a tela, ao contrário de quase tudo, dá atenção total a ela.</p>
     <p>Agora, antes que a culpa te engula, para.</p>
     <p><span class="destaque">Isso não é culpa sua.</span> Ninguém te ensinou isso. Não tem aula de presença no pré-natal. Não tem manual de vínculo na maternidade. Você recebeu uma criança e uma lista infinita de obrigações, e ninguém te mostrou o que realmente importava.</p>
@@ -306,16 +498,17 @@
 
 <!-- VIRADA -->
 <section class="sec-creme">
-  <div class="wrap">
-    <h2>Você não precisa de mais tempo. Precisa de outra forma de estar presente.</h2>
+  <div class="wrap rv">
+    <p class="kicker">A virada</p>
+    <h2>Você não precisa de mais tempo. Precisa de <em>outra forma</em> de estar presente.</h2>
     <p>Deixa eu te apresentar a descoberta que muda o jogo:</p>
-    <p class="destaque" style="font-size:1.15rem;">5 minutos de presença total valem mais para o cérebro do seu filho do que 1 hora de presença distraída.</p>
+    <div class="frase-caixa">5 minutos de presença total valem mais para o cérebro do seu filho do que 1 hora de presença distraída.</div>
     <p>Não é frase de efeito. É neurociência. Aqueles micromomentos de conexão que Harvard estudou não exigem horas. Exigem intenção. Olho no olho. Corpo no chão. Atenção inteira, mesmo que por poucos minutos.</p>
     <p>Pensa em uma planta.</p>
     <p>Imagina que você rega essa planta em conta-gotas ao longo do dia inteiro. Uma gotinha aqui, outra ali, entre uma tarefa e outra. No fim do dia, você "regou" ela o dia todo... e ela continua seca. As gotas evaporam antes de chegar na raiz.</p>
     <p>Agora imagina que você para tudo por 2 minutos e rega essa planta de verdade. Água chegando na raiz, encharcando a terra.</p>
     <p class="destaque">Essa planta floresce.</p>
-    <p class="destaque" style="font-size:1.15rem;">Seu filho é essa planta.</p>
+    <p class="grande">Seu filho é essa planta.</p>
     <p>Cada "hum, legal" distraído é uma gota que evapora. Cada momento de presença total, mesmo curto, é água na raiz: ativa linguagem, constrói segurança emocional, destrava o desenvolvimento que estava esperando por você.</p>
     <p>A pergunta óbvia agora é: <span class="destaque">como fazer isso na prática, com a rotina que eu tenho?</span></p>
     <p>Como transformar os poucos minutos que você tem em momentos que realmente chegam na raiz? O que fazer nesses minutos? Como brincar do jeito que o cérebro do seu filho precisa, na idade que ele tem, com o que você já tem em casa?</p>
@@ -325,20 +518,21 @@
 
 <!-- MÉTODO -->
 <section>
-  <div class="wrap">
-    <h2>Apresento a você o Código Invisível da Infância</h2>
+  <div class="wrap rv">
+    <p class="kicker">O método</p>
+    <h2>Apresento a você o <em>Código Invisível da Infância</em></h2>
     <p>O Código Invisível da Infância é o método proprietário criado por Maria Izabel da Rosa, terapeuta da infância e família com mais de 15 anos de clínica, que já transformou a realidade de mais de 2.000 famílias.</p>
     <p>Ele se chama "invisível" por um motivo: tudo o que realmente destrava o desenvolvimento de uma criança acontece em um lugar que ninguém te ensinou a enxergar. Não está no brinquedo. Não está na atividade do Pinterest. Está na qualidade do vínculo que atravessa cada minuto que vocês passam juntos.</p>
     <p>O método se sustenta em <span class="destaque">5 pilares</span>, que juntos formam a base completa do desenvolvimento infantil:</p>
     <div class="pilares">
-      <div class="pilar"><div class="num">1</div><h3>Presença</h3><p>Como sair da presença parcial e entrar em conexão total em minutos, mesmo com a rotina cheia.</p></div>
-      <div class="pilar"><div class="num">2</div><h3>Vínculo</h3><p>Como construir a segurança emocional que é o solo de todo o desenvolvimento.</p></div>
-      <div class="pilar"><div class="num">3</div><h3>Regulação</h3><p>Como o seu estado emocional organiza (ou desorganiza) o cérebro do seu filho, e como usar isso a seu favor.</p></div>
-      <div class="pilar"><div class="num">4</div><h3>Brincar com Intenção</h3><p>O jeito certo de brincar para ativar linguagem, coordenação, empatia e autonomia em cada faixa etária.</p></div>
-      <div class="pilar"><div class="num">5</div><h3>Ritmo e Rotina</h3><p>Como transformar o dia a dia comum (banho, comida, trajeto) em oportunidades de desenvolvimento.</p></div>
+      <div class="pilar"><h3>Presença</h3><p>Como sair da presença parcial e entrar em conexão total em minutos, mesmo com a rotina cheia.</p></div>
+      <div class="pilar"><h3>Vínculo</h3><p>Como construir a segurança emocional que é o solo de todo o desenvolvimento.</p></div>
+      <div class="pilar"><h3>Regulação</h3><p>Como o seu estado emocional organiza (ou desorganiza) o cérebro do seu filho, e como usar isso a seu favor.</p></div>
+      <div class="pilar"><h3>Brincar com Intenção</h3><p>O jeito certo de brincar para ativar linguagem, coordenação, empatia e autonomia em cada faixa etária.</p></div>
+      <div class="pilar"><h3>Ritmo e Rotina</h3><p>Como transformar o dia a dia comum (banho, comida, trajeto) em oportunidades de desenvolvimento.</p></div>
     </div>
     <p>E para que você nunca se perca, você recebe a <span class="destaque">Mandala do Desenvolvimento Infantil Absoluto</span>: um mapa visual e prático que mostra, em uma única imagem, como os 5 pilares se conectam e onde o desenvolvimento do seu filho pode estar travado hoje. É o tipo de ferramenta que você cola na porta da geladeira e consulta em 10 segundos.</p>
-    <p class="destaque" style="font-size:1.1rem;">Não é mágica. É neurociência aplicada com amor.</p>
+    <p class="grande">Não é mágica. É neurociência aplicada com amor.</p>
     <div class="btn-area">
       <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
     </div>
@@ -347,12 +541,13 @@
 
 <!-- MÓDULOS -->
 <section class="sec-creme">
-  <div class="wrap">
-    <h2>Por dentro do Código: 5 módulos, 33 aulas, nenhuma enrolação</h2>
+  <div class="wrap rv">
+    <p class="kicker">O conteúdo</p>
+    <h2>Por dentro do Código: 5 módulos, 33 aulas, <em>nenhuma enrolação</em></h2>
     <p>Todas as aulas têm <span class="destaque">menos de 10 minutos</span>. Você assiste no intervalo do almoço, na fila da escola, com o celular na mão. São 4 horas de conteúdo total, desenhadas para mães que não têm tempo a perder.</p>
 
     <div class="modulo">
-      <span class="tag">Módulo 1</span>
+      <span class="mtag">Módulo 1</span>
       <h3>O Despertar da Presença</h3>
       <p class="desc">Onde o destravamento começa (e onde você já sente resultado nos primeiros dias)</p>
       <ul>
@@ -364,7 +559,7 @@
     </div>
 
     <div class="modulo">
-      <span class="tag">Módulo 2</span>
+      <span class="mtag">Módulo 2</span>
       <h3>O Cérebro Que Espelha</h3>
       <p class="desc">A neurociência do desenvolvimento traduzida para a vida real</p>
       <ul>
@@ -376,7 +571,7 @@
     </div>
 
     <div class="modulo">
-      <span class="tag">Módulo 3</span>
+      <span class="mtag">Módulo 3</span>
       <h3>A Arte de Brincar com Intenção</h3>
       <p class="desc">O jeito certo de brincar que destrava fala, movimento e emoção</p>
       <ul>
@@ -388,7 +583,7 @@
     </div>
 
     <div class="modulo">
-      <span class="tag">Módulo 4</span>
+      <span class="mtag">Módulo 4</span>
       <h3>Destravando Cada Área</h3>
       <p class="desc">Físico, emocional e cognitivo: o mapa por idade, de 0 a 6 anos</p>
       <ul>
@@ -400,7 +595,7 @@
     </div>
 
     <div class="modulo">
-      <span class="tag">Módulo 5</span>
+      <span class="mtag">Módulo 5</span>
       <h3>O Código na Vida Real</h3>
       <p class="desc">Rotina cheia, casa de verdade, mãe que trabalha: como sustentar tudo isso</p>
       <ul>
@@ -415,8 +610,9 @@
 
 <!-- FASCINAÇÕES -->
 <section>
-  <div class="wrap">
-    <h2>Dentro do Código, você também vai descobrir...</h2>
+  <div class="wrap rv">
+    <p class="kicker">E tem mais</p>
+    <h2>Dentro do Código, você também vai <em>descobrir...</em></h2>
     <ul class="fasc">
       <li>Por que seu filho se comporta pior justamente com você (e por que isso é, na verdade, um bom sinal que quase todo mundo interpreta errado)</li>
       <li>A pergunta de 5 palavras que acalma uma criança em crise mais rápido do que qualquer "para com isso"</li>
@@ -442,41 +638,44 @@
 
 <!-- BIO -->
 <section class="sec-creme">
-  <div class="wrap" style="text-align:center;">
-    <div class="bio-foto">MI</div>
-    <h2>Quem vai te guiar nessa jornada</h2>
-    <div style="text-align:left;">
-      <p><span class="destaque">Maria Izabel da Rosa</span> é terapeuta da infância e família, com mais de 15 anos de atendimento clínico dedicados a uma única missão: entender o que faz uma criança florescer e o que a trava.</p>
-      <p>Ao longo dessa jornada, ela integrou neurociência, neurodesenvolvimento, psicanálise e olhar sistêmico em um método próprio, e já acompanhou de perto a transformação de mais de 2.000 famílias. Sua formação em psicopedagogia clínica e institucional sustenta a base técnica de tudo o que ela ensina.</p>
-      <p>Mas o Código Invisível da Infância não nasceu em um consultório. Nasceu no chão da sala dela.</p>
-      <p>Um dia, Maria Izabel sentou no chão para brincar com a própria filha. No automático, pegou o celular. E ouviu a pergunta que mudou tudo:</p>
-      <p class="destaque" style="font-size:1.15rem;">"Mãe, você vai brincar comigo ou vai trabalhar de novo?"</p>
-      <p>Aquela frase a rasgou por dentro. Ali estava ela: a especialista em vínculo, a profissional que ensinava famílias a se conectar... perdendo o próprio vínculo dentro de casa.</p>
-      <p>Naquele dia, ela entendeu que o problema das mães modernas não é falta de amor, nem falta de informação, nem falta de esforço. É um código invisível que ninguém ensina. E decidiu que sua missão seria torná-lo visível para toda mãe que, como ela, ama profundamente e mesmo assim se sente falhando.</p>
+  <div class="wrap rv">
+    <p class="kicker centro" style="justify-content:center;">Sua guia nessa jornada</p>
+    <h2 style="text-align:center;">Quem é <em>Maria Izabel da Rosa</em></h2>
+    <div class="bio-grid">
+      <div class="bio-foto">MI</div>
+      <div>
+        <p><span class="destaque">Maria Izabel da Rosa</span> é terapeuta da infância e família, com mais de 15 anos de atendimento clínico dedicados a uma única missão: entender o que faz uma criança florescer e o que a trava.</p>
+        <p>Ao longo dessa jornada, ela integrou neurociência, neurodesenvolvimento, psicanálise e olhar sistêmico em um método próprio, e já acompanhou de perto a transformação de mais de 2.000 famílias. Sua formação em psicopedagogia clínica e institucional sustenta a base técnica de tudo o que ela ensina.</p>
+        <p>Mas o Código Invisível da Infância não nasceu em um consultório. Nasceu no chão da sala dela.</p>
+        <p>Um dia, Maria Izabel sentou no chão para brincar com a própria filha. No automático, pegou o celular. E ouviu a pergunta que mudou tudo:</p>
+        <p class="grande">"Mãe, você vai brincar comigo ou vai trabalhar de novo?"</p>
+        <p>Aquela frase a rasgou por dentro. Ali estava ela: a especialista em vínculo, a profissional que ensinava famílias a se conectar... perdendo o próprio vínculo dentro de casa.</p>
+        <p>Naquele dia, ela entendeu que o problema das mães modernas não é falta de amor, nem falta de informação, nem falta de esforço. É um código invisível que ninguém ensina. E decidiu que sua missão seria torná-lo visível para toda mãe que, como ela, ama profundamente e mesmo assim se sente falhando.</p>
+      </div>
     </div>
-    <div class="citacao">"Quando a infância é vivida com presença, o futuro é construído com segurança."<span>Maria Izabel da Rosa · @mariaizabel.psico</span></div>
+    <div class="citacao">Quando a infância é vivida com presença, o futuro é construído com segurança.<span>Maria Izabel da Rosa · @mariaizabel.psico</span></div>
   </div>
 </section>
 
 <!-- CASOS -->
 <section>
-  <div class="wrap">
-    <h2>O que acontece quando uma mãe aprende a olhar para o lugar certo</h2>
+  <div class="wrap rv">
+    <p class="kicker">Histórias reais</p>
+    <h2>O que acontece quando uma mãe aprende a olhar <em>para o lugar certo</em></h2>
     <div class="caso">
       <h3>O menino que "tinha preguiça de falar"</h3>
       <p>Pedro tinha 2 anos. Passava horas no celular. Não atendia quando chamavam pelo nome. Tinha crises de choro intensas. E não falava.</p>
       <p>Todo mundo em volta repetia a mesma coisa: "é preguiça de falar", "menino demora mesmo", "cada criança tem seu tempo".</p>
       <p>Mas a mãe dele sentia, naquele lugar onde mãe sente, que algo estava errado. E ela estava certa. A avaliação identificou sinais de atraso no desenvolvimento.</p>
-      <p>O caminho não foi mágico: foi método. Estímulo adequado, reorganização da rotina e, no centro de tudo, a reconexão entre mãe e filho. Em menos de 2 meses, Pedro começou a imitar sons, buscar contato visual e brincar de forma funcional.</p>
-      <p>Hoje, aos 5 anos, Pedro é uma criança segura e curiosa. A intuição daquela mãe, somada ao conhecimento certo, mudou a trajetória de uma vida.</p>
+      <p>O caminho não foi mágico: foi método. Estímulo adequado, reorganização da rotina e, no centro de tudo, a reconexão entre mãe e filho.</p>
+      <div class="resultado">Em menos de 2 meses, Pedro começou a imitar sons, buscar contato visual e brincar de forma funcional. Hoje, aos 5 anos, é uma criança segura e curiosa.</div>
     </div>
     <div class="caso">
       <h3>A mãe que estava "o dia inteiro junto"</h3>
       <p>Essa mãe passava o dia inteiro com o filho. O dia INTEIRO. E mesmo assim, ele gritava, batia, testava sem parar. Ela chegou exausta, se sentindo a pior mãe do mundo: "eu não saio do lado dele, como pode ser falta de atenção?"</p>
       <p>Quando Maria Izabel destrinchou a rotina, o padrão apareceu: presença parcial constante. O corpo estava ali o tempo todo. A atenção, nunca.</p>
       <p>A prescrição foi o Ritual de Presença Consciente, o mesmo que você recebe logo no Módulo 1: celular desligado, 5 minutos no chão, olho no olho, brincadeira escolhida pela criança.</p>
-      <p>Em menos de 3 dias, o menino parou de gritar. Começou a contar histórias. E passou a beijar o rosto da mãe espontaneamente.</p>
-      <p>Nada na rotina externa mudou. A quantidade de tempo era a mesma. O que mudou foi a qualidade de minutos que finalmente chegaram na raiz.</p>
+      <div class="resultado">Em menos de 3 dias, o menino parou de gritar. Começou a contar histórias. E passou a beijar o rosto da mãe espontaneamente.</div>
     </div>
     <p class="disclaimer">Importante: cada criança e cada família têm sua história. Os casos acima ilustram o processo do método e não representam promessa de resultado idêntico. O Código é um programa educacional e não substitui avaliação ou acompanhamento profissional individual quando necessário.</p>
   </div>
@@ -484,8 +683,9 @@
 
 <!-- IMAGINE -->
 <section class="sec-verde">
-  <div class="wrap">
-    <h2>Agora imagina a sua casa daqui a 30 dias...</h2>
+  <div class="wrap rv">
+    <p class="kicker">Daqui a 30 dias</p>
+    <h2>Agora imagina a sua casa <em>daqui a 30 dias...</em></h2>
     <ul class="imagine-lista">
       <li>Seu filho brincando com autonomia, criatividade e segurança, sem pedir a tela a cada dez minutos.</li>
       <li>Você sentando no chão por alguns minutos e sentindo, na resposta dele, que aqueles minutos chegaram na raiz.</li>
@@ -493,50 +693,55 @@
       <li>A culpa de madrugada dando lugar a uma certeza silenciosa: "eu sei o que estou fazendo".</li>
       <li>E o vínculo entre vocês, aquele que parecia estar escapando, crescendo de volta. Dia após dia, rega após rega.</li>
     </ul>
-    <p>Não é uma casa perfeita. É uma casa com código. E ela está a uma decisão de distância.</p>
+    <p class="grande">Não é uma casa perfeita. É uma casa com código. E ela está a uma decisão de distância.</p>
   </div>
 </section>
 
 <!-- OFERTA -->
 <section class="sec-creme" id="oferta">
-  <div class="wrap">
-    <h2>Tudo o que você recebe ao entrar hoje no Código</h2>
+  <div class="wrap rv">
+    <p class="kicker">A oferta completa</p>
+    <h2>Tudo o que você recebe ao entrar hoje <em>no Código</em></h2>
     <div class="stack-item">
       <h3>O Código para Destravar o Desenvolvimento Infantil</h3>
       <p>5 módulos, 33 aulas objetivas de menos de 10 minutos, com o método completo dos 5 pilares.</p>
-      <p class="valor">Se essa jornada fosse conduzida em acompanhamento individual no consultório, ao longo de meses de sessões, o investimento facilmente ultrapassaria R$ 4.000.</p>
+      <p class="valor">Em acompanhamento individual no consultório, essa jornada ultrapassaria R$ 4.000</p>
     </div>
     <div class="stack-item">
       <h3>A Mandala do Desenvolvimento Infantil Absoluto</h3>
       <p>O mapa visual do método para diagnosticar e ajustar o desenvolvimento do seu filho em uma olhada.</p>
-      <p class="valor">Ferramenta exclusiva do método, não existe à venda separadamente.</p>
+      <p class="valor">Ferramenta exclusiva do método, não existe à venda separadamente</p>
     </div>
     <div class="stack-item">
       <h3>O Ritual de Presença Consciente (já no Módulo 1)</h3>
       <p>O protocolo prático que você aplica no primeiro dia e que pode gerar mudanças perceptíveis na primeira semana.</p>
     </div>
     <div class="stack-item bonus">
-      <h3>🎁 BÔNUS: Guia de Atividades para Destravar o Desenvolvimento Infantil</h3>
+      <span class="btag">Bônus exclusivo</span>
+      <h3>Guia de Atividades para Destravar o Desenvolvimento Infantil</h3>
       <p>Um banco de brincadeiras organizado por faixa etária (0 a 6 anos), por objetivo de desenvolvimento (fala, coordenação, emoção, autonomia) e por nível de conexão. Tudo usando o que você já tem em casa. Acabou o "não sei o que fazer com ele".</p>
-      <p class="valor">Sozinho, esse guia valeria o preço de um curso inteiro.</p>
+      <p class="valor">Sozinho, esse guia valeria o preço de um curso inteiro</p>
     </div>
     <div class="preco-box">
-      <p class="de">Somando tudo, são bem mais de R$ 4.000 em conhecimento e ferramentas. Seu investimento hoje:</p>
-      <div class="parcela">12x de R$ 72,09</div>
+      <p class="de">Somando tudo, são <span class="riscado">bem mais de R$ 4.000</span> em conhecimento e ferramentas. Seu investimento hoje:</p>
+      <div class="parcela"><small>12x de</small> R$ 72,09</div>
       <p class="avista">ou R$ 697,00 à vista</p>
       <p class="contexto">Menos de R$ 2,40 por dia ao longo de um ano. Menos que um lanche na cantina da escola. Pelo conhecimento que muda a forma como seu filho cresce.</p>
-      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO AGORA</a>
-      <p class="btn-nota" style="color:var(--verde-s);">Compra 100% segura pela Hotmart · Acesso imediato após a confirmação do pagamento</p>
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO AGORA</a>
+      <div class="seguro">
+        <span>Compra 100% segura pela Hotmart</span>
+        <span>Acesso imediato</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- GARANTIA -->
 <section>
-  <div class="wrap" style="text-align:center;">
-    <div class="selo"><span class="n">7</span><span class="t">dias de<br>garantia</span></div>
-    <h2>Garantia Presença Total: 7 dias de risco zero</h2>
-    <div style="text-align:left;">
+  <div class="wrap rv" style="text-align:center;">
+    <div class="selo"><span class="n">7</span><span class="t">dias de garantia</span></div>
+    <h2>Garantia Presença Total: <em>7 dias de risco zero</em></h2>
+    <div style="text-align:left; max-width:640px; margin:0 auto;">
       <p>Funciona assim, sem letra miúda:</p>
       <p>Entre no Código hoje. Assista às aulas. Aplique o Ritual de Presença Consciente do Módulo 1. Sente no chão com seu filho, olho no olho, e observe o que acontece.</p>
       <p>Se em até 7 dias você sentir que o método não é para você, por qualquer motivo (ou por motivo nenhum), basta enviar um único e-mail e <span class="destaque">100% do seu dinheiro volta</span>. Sem perguntas, sem justificativa, sem constrangimento.</p>
@@ -551,8 +756,9 @@
 
 <!-- OBJEÇÕES -->
 <section class="sec-creme">
-  <div class="wrap">
-    <h2>"Eu queria muito... mas"</h2>
+  <div class="wrap rv">
+    <p class="kicker">Conversa honesta</p>
+    <h2>"Eu queria muito... <em>mas</em>"</h2>
     <details>
       <summary>"Eu não tenho tempo nem para respirar. Como vou fazer um curso?"</summary>
       <p>Essa objeção é exatamente o motivo pelo qual o Código existe. As aulas têm menos de 10 minutos: cabem na fila da escola, no intervalo do trabalho, antes de dormir. E o método em si foi desenhado para mães sem tempo: ele não pede horas, pede minutos com qualidade. Você não vai adicionar tarefas à sua rotina. Vai transformar as que já existem. Se você tem 5 minutos por dia, você tem o que o método precisa.</p>
@@ -578,8 +784,9 @@
 
 <!-- FAQ -->
 <section>
-  <div class="wrap">
-    <h2>Perguntas frequentes</h2>
+  <div class="wrap rv">
+    <p class="kicker">Dúvidas práticas</p>
+    <h2>Perguntas <em>frequentes</em></h2>
     <details>
       <summary>Para qual idade o método funciona?</summary>
       <p>O Código foi desenvolvido para mães de crianças de 0 a 6 anos. O bônus de atividades é organizado exatamente por essas faixas etárias. Mães de crianças um pouco mais velhas também relatam benefícios nos pilares de presença e vínculo, que não têm idade.</p>
@@ -617,18 +824,19 @@
 
 <!-- CTA FINAL -->
 <section class="sec-verde">
-  <div class="wrap">
-    <h2>Daqui a um ano, seu filho estará um ano mais velho. A pergunta é: como?</h2>
+  <div class="wrap rv">
+    <p class="kicker">A decisão</p>
+    <h2>Daqui a um ano, seu filho estará um ano mais velho. A pergunta é: <em>como?</em></h2>
     <p>Existem dois caminhos saindo desta página.</p>
     <p>No primeiro, você fecha essa aba e a vida segue. A rotina continua engolindo os dias. As gotinhas continuam evaporando antes de chegar na raiz. E daqui a um ano, você estará com as mesmas dúvidas, a mesma culpa apertando de madrugada, e um filho um ano mais crescido tendo recebido a mesma presença parcial.</p>
     <p>No segundo, você entra no Código hoje. Amanhã, você desliga o celular, senta no chão por 5 minutos e olha nos olhos do seu filho de um jeito que talvez faça tempo que não acontece. E começa, minuto a minuto, a regar a raiz.</p>
-    <p>A infância do seu filho está acontecendo agora. Não na semana que vem, quando a rotina acalmar. Não nas férias. <span class="destaque">Agora. E a primeira infância não tem replay.</span></p>
+    <p class="grande">A infância do seu filho está acontecendo agora. E a primeira infância não tem replay.</p>
     <p>Você não precisa de mais tempo. Você precisa de outra forma de estar presente. E ela está a um clique de distância, com uma semana inteira de garantia para você testar sem nenhum risco.</p>
     <div class="btn-area">
       <a class="btn" href="https://pay.hotmart.com/H100415402M">SIM, QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
-      <p class="btn-nota" style="color:var(--verde-s);">12x de R$ 72,09 ou R$ 697,00 à vista · Garantia Presença Total de 7 dias · Acesso imediato</p>
+      <p class="btn-nota clara">12x de R$ 72,09 ou R$ 697,00 à vista · Garantia Presença Total de 7 dias · Acesso imediato</p>
     </div>
-    <div class="ps" style="background:rgba(255,255,255,0.06); color:var(--creme-e);">
+    <div class="ps">
       <p><span class="destaque">P.S.</span> Se você rolou a página até aqui, deixa eu resumir: existe algo invisível travando o desenvolvimento do seu filho, e esse algo tem nome (Presença Parcial) e tem solução (micromomentos de conexão intencional, ensinados passo a passo no Código Invisível da Infância). São 33 aulas curtas, a Mandala do Desenvolvimento, o bônus com o banco de brincadeiras de 0 a 6 anos, e 7 dias de garantia incondicional. O risco é zero. A ausência, essa sim, custa caro.</p>
       <p style="margin-bottom:0;"><span class="destaque">P.P.S.</span> Um dia, a filha de Maria Izabel perguntou: "Mãe, você vai brincar comigo ou vai trabalhar de novo?". Aquela pergunta doeu o suficiente para dar origem a um método que já alcançou mais de 2.000 famílias. Que a sua resposta, a partir de hoje, seja diferente da que ela conseguiu dar naquele dia. Seu filho está esperando. E 5 minutos de verdade podem começar a mudar tudo.</p>
     </div>
@@ -639,7 +847,8 @@
 </section>
 
 <footer>
-  <p>Código para Destravar o Desenvolvimento Infantil · Maria Izabel da Rosa · @mariaizabel.psico</p>
+  <p class="fmarca">Código para Destravar o <em>Desenvolvimento Infantil</em></p>
+  <p>Maria Izabel da Rosa · Terapeuta da Infância e Família · @mariaizabel.psico</p>
   <p>Este é um programa educacional sobre desenvolvimento infantil, presença e vínculo. Não constitui tratamento, diagnóstico ou aconselhamento clínico individual. Resultados variam de família para família.</p>
   <p>Pagamento processado com segurança pela <a href="https://hotmart.com" rel="noopener">Hotmart</a>.</p>
 </footer>
@@ -647,6 +856,13 @@
 <div class="sticky-cta">
   <a href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO · 12x R$ 72,09</a>
 </div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
