@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Código para Destravar o Desenvolvimento Infantil · Maria Izabel da Rosa</title>
+<meta name="description" content="Destrave o desenvolvimento físico, emocional e cognitivo do seu filho de 0 a 6 anos com minutos de presença de verdade por dia. Método de Maria Izabel da Rosa, terapeuta da infância e família.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2d4a3e;
+    --verde-e: #1e3229;
+    --verde-c: #4a7c6b;
+    --verde-s: #8fb8a8;
+    --creme: #f5f0e8;
+    --creme-e: #ede6d6;
+    --terra: #c4956a;
+    --terra-s: #e8c9a0;
+    --off: #faf8f3;
+    --txt: #1a2820;
+    --txt2: #4a5c53;
+    --mostarda: #b8912e;
+    --cta: #c05621;
+    --cta-h: #a8481a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    background: var(--off);
+    color: var(--txt);
+    line-height: 1.75;
+    font-size: 17px;
+  }
+  section { padding: 56px 20px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  h1, h2 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.2; }
+  h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); color: var(--verde); margin-bottom: 22px; font-weight: 700; }
+  p { margin-bottom: 16px; }
+  .destaque { font-weight: 700; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero { background: var(--verde); color: var(--creme); text-align: center; padding: 56px 20px 48px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06); top: -220px; right: -160px;
+  }
+  .hero::after {
+    content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05); bottom: -200px; left: -140px;
+  }
+  .hero .tag { color: var(--verde-s); display: block; margin-bottom: 20px; }
+  .hero h1 {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 700; margin-bottom: 18px; letter-spacing: -0.5px;
+  }
+  .hero h1 em { font-style: italic; color: var(--terra-s); }
+  .hero .sub { max-width: 640px; margin: 0 auto 30px; font-size: 1.05rem; color: var(--creme-e); }
+
+  /* VSL */
+  .video-frase { font-weight: 600; color: var(--creme); max-width: 640px; margin: 0 auto 18px; font-size: 1.02rem; }
+  .video-box {
+    position: relative; max-width: 680px; margin: 0 auto;
+    aspect-ratio: 16/9; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35); background: #000;
+  }
+  .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-legenda { font-size: 0.85rem; color: var(--verde-s); max-width: 600px; margin: 14px auto 0; }
+
+  /* CTA */
+  .btn {
+    display: inline-block; background: var(--cta); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 1.05rem; text-align: center;
+    padding: 18px 34px; border-radius: 50px; letter-spacing: 0.3px;
+    box-shadow: 0 8px 24px rgba(192,86,33,0.35);
+    transition: transform 0.15s ease, background 0.15s ease;
+    max-width: 100%;
+  }
+  .btn:hover { background: var(--cta-h); transform: translateY(-2px); }
+  .btn-area { text-align: center; margin-top: 30px; }
+  .btn-nota { font-size: 0.82rem; color: var(--txt2); margin-top: 12px; }
+  .hero .btn-nota { color: var(--verde-s); }
+
+  /* SEÇÕES ALTERNADAS */
+  .sec-creme { background: var(--creme); }
+  .sec-verde { background: var(--verde-e); color: var(--creme-e); }
+  .sec-verde h2 { color: var(--terra-s); }
+  .sec-verde .destaque { color: #fff; }
+
+  /* LISTA DE DORES */
+  .dores { list-style: none; margin: 24px 0; }
+  .dores li {
+    padding: 14px 0 14px 40px; position: relative;
+    border-bottom: 1px solid var(--creme-e);
+  }
+  .dores li::before {
+    content: '✓'; position: absolute; left: 6px; top: 14px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--verde); color: var(--creme);
+    font-size: 0.8rem; font-weight: 700; text-align: center; line-height: 24px;
+  }
+
+  /* CARDS PILARES */
+  .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 28px 0; }
+  .pilar {
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
+    padding: 20px; box-shadow: 0 2px 8px rgba(45,74,62,0.06);
+  }
+  .pilar .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700;
+    color: var(--terra); line-height: 1; margin-bottom: 8px;
+  }
+  .pilar h3 { color: var(--verde); font-size: 1.04rem; margin-bottom: 6px; }
+  .pilar p { font-size: 0.9rem; color: var(--txt2); margin: 0; }
+
+  /* MÓDULOS */
+  .modulo {
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 14px;
+    padding: 26px 28px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(45,74,62,0.05);
+  }
+  .modulo .tag { color: var(--mostarda); }
+  .modulo h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; color: var(--verde); margin: 6px 0 4px; }
+  .modulo .desc { font-style: italic; color: var(--txt2); font-size: 0.92rem; margin-bottom: 12px; }
+  .modulo ul { list-style: none; }
+  .modulo li { padding: 6px 0 6px 26px; position: relative; font-size: 0.95rem; }
+  .modulo li::before { content: '›'; position: absolute; left: 8px; color: var(--terra); font-weight: 700; }
+
+  /* FASCINAÇÕES */
+  .fasc { list-style: none; margin: 24px 0; columns: 1; }
+  .fasc li { padding: 10px 0 10px 30px; position: relative; break-inside: avoid; }
+  .fasc li::before { content: '+'; position: absolute; left: 4px; top: 8px; color: var(--mostarda); font-weight: 700; font-size: 1.2rem; }
+  @media (min-width: 700px) { .fasc { columns: 2; column-gap: 40px; } }
+
+  /* BIO */
+  .bio-foto {
+    width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 20px;
+    background: var(--verde); color: var(--creme);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600;
+    border: 4px solid var(--terra-s);
+  }
+  .citacao {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.5rem; color: var(--verde); text-align: center;
+    max-width: 560px; margin: 28px auto; line-height: 1.4;
+  }
+  .citacao span { display: block; font-family: 'Instrument Sans', sans-serif; font-style: normal; font-size: 0.85rem; color: var(--txt2); margin-top: 10px; }
+
+  /* CASOS */
+  .caso {
+    background: #fff; border-left: 4px solid var(--terra); border-radius: 0 14px 14px 0;
+    padding: 26px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(45,74,62,0.05);
+  }
+  .caso h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--verde); margin-bottom: 12px; }
+  .disclaimer { font-size: 0.8rem; color: var(--txt2); font-style: italic; }
+
+  /* IMAGINE */
+  .imagine-lista { list-style: none; margin: 24px 0; }
+  .imagine-lista li { padding: 12px 0 12px 38px; position: relative; }
+  .imagine-lista li::before {
+    content: '🌱'; position: absolute; left: 0; top: 12px; font-size: 1.1rem;
+  }
+
+  /* OFERTA */
+  .stack-item {
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
+    padding: 22px 26px; margin-bottom: 14px;
+  }
+  .stack-item h3 { color: var(--verde); font-size: 1.08rem; margin-bottom: 6px; }
+  .stack-item p { font-size: 0.94rem; margin-bottom: 6px; }
+  .stack-item .valor { font-size: 0.82rem; color: var(--mostarda); font-weight: 600; }
+  .stack-item.bonus { border: 2px dashed var(--terra); background: #fdf9f2; }
+  .preco-box {
+    background: var(--verde); color: var(--creme); border-radius: 18px;
+    text-align: center; padding: 40px 24px; margin-top: 30px;
+  }
+  .preco-box .de { font-size: 0.95rem; color: var(--verde-s); }
+  .preco-box .parcela {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 7vw, 3.6rem);
+    font-weight: 700; line-height: 1.1; margin: 8px 0 2px;
+  }
+  .preco-box .avista { font-size: 1rem; color: var(--creme-e); margin-bottom: 8px; }
+  .preco-box .contexto { font-size: 0.9rem; color: var(--verde-s); max-width: 420px; margin: 0 auto 22px; }
+
+  /* GARANTIA */
+  .selo {
+    width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px;
+    background: var(--terra-s); color: var(--verde-e);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-weight: 700; border: 3px dashed var(--terra);
+  }
+  .selo .n { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; line-height: 1; }
+  .selo .t { font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* OBJEÇÕES E FAQ */
+  details {
+    background: #fff; border: 1px solid var(--creme-e); border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 12px;
+  }
+  details summary {
+    cursor: pointer; font-weight: 600; color: var(--verde);
+    list-style: none; position: relative; padding-right: 30px;
+  }
+  details summary::after { content: '+'; position: absolute; right: 4px; top: 0; color: var(--terra); font-size: 1.3rem; font-weight: 700; }
+  details[open] summary::after { content: '−'; }
+  details p { margin: 12px 0 0; font-size: 0.95rem; }
+
+  /* FINAL */
+  .ps { background: var(--creme); border-radius: 14px; padding: 24px 28px; margin-top: 24px; font-size: 0.96rem; }
+
+  footer {
+    background: var(--verde-e); color: var(--verde-s);
+    text-align: center; padding: 36px 20px; font-size: 0.8rem; line-height: 1.7;
+  }
+  footer a { color: var(--creme-e); }
+
+  /* STICKY CTA MOBILE */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(30,50,41,0.97); padding: 10px 14px; text-align: center;
+    display: none; box-shadow: 0 -4px 18px rgba(0,0,0,0.25);
+  }
+  .sticky-cta a {
+    display: block; background: var(--cta); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 0.95rem; padding: 13px 10px; border-radius: 40px;
+  }
+  @media (max-width: 720px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 70px; }
+    section { padding: 44px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO + VSL -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Para mães de crianças de 0 a 6 anos que sentem que algo está travando o desenvolvimento do filho</span>
+    <h1>Existe algo <em>invisível</em> travando o desenvolvimento do seu filho. E ninguém te ensinou a olhar para esse lugar.</h1>
+    <p class="sub">Assista ao vídeo abaixo e descubra como destravar o desenvolvimento físico, emocional e cognitivo do seu filho com minutos de presença de verdade por dia. Sem telas, sem brinquedos caros e sem precisar de mais tempo (que você não tem).</p>
+    <p class="video-frase">Aperte o play e descubra o que a ciência de Harvard revelou sobre o fator número 1 do desenvolvimento infantil. Não é escolaridade, não é renda, não é brinquedo. E você já tem esse fator dentro de você.</p>
+    <div class="video-box">
+      <iframe src="https://www.youtube-nocookie.com/embed/kcGUJs6GQHI?rel=0&modestbranding=1" title="Vídeo: Como destravar o desenvolvimento do seu filho" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-legenda">Assista com som. Nos primeiros minutos, Maria Izabel revela por que a birra do seu filho pode ser, na verdade, um pedido de conexão.</p>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
+      <p class="btn-nota">12x de R$ 72,09 · Garantia incondicional de 7 dias · Acesso imediato</p>
+    </div>
+  </div>
+</header>
+
+<!-- DORES -->
+<section>
+  <div class="wrap">
+    <h2>Me diz se você se reconhece em alguma dessas frases...</h2>
+    <p>Essa página é para você que...</p>
+    <ul class="dores">
+      <li>Está fisicamente ao lado do seu filho, mas sente que está <span class="destaque">presente de corpo e ausente de verdade</span>. Você responde "hum, que legal" sem nem olhar para o desenho que ele mostrou.</li>
+      <li>Percebe seu filho <span class="destaque">agitado, preso às telas, travado</span>, e sente no fundo do peito que algo não está fluindo como deveria. Mas todo mundo diz "é fase", e você fica sozinha com essa angústia.</li>
+      <li>Já se pegou gritando, perdendo a paciência, e depois se olhou no espelho pensando: <span class="destaque">"eu me torno uma pessoa que eu odeio quando estou com meus filhos"</span>.</li>
+      <li>Ouviu a voz da sua própria mãe saindo da sua boca. E prometeu que nunca seria assim.</li>
+      <li>Leu livros, salvou posts, seguiu especialistas... e mesmo assim <span class="destaque">não consegue aplicar nada</span> no meio do caos da rotina real.</li>
+      <li>Sente que <span class="destaque">ninguém te preparou para o que você sente</span>. Só te ensinaram o que você deve fazer.</li>
+      <li>Tem medo, aquele medo que aperta de madrugada, de que seu filho esteja <span class="destaque">atrasado no desenvolvimento</span>. Ou pior: medo de estar <span class="destaque">perdendo a infância dele</span> enquanto corre para dar conta de tudo.</li>
+    </ul>
+    <p>Se você balançou a cabeça em pelo menos uma dessas frases, respira. Continua lendo.</p>
+    <p>Porque eu preciso te contar uma coisa que ninguém teve a coragem de te dizer:</p>
+    <p class="destaque" style="font-size:1.15rem;">O problema não é você ser uma mãe ruim. O problema é que você está olhando para o lugar errado.</p>
+  </div>
+</section>
+
+<!-- MECANISMO DO PROBLEMA -->
+<section class="sec-verde">
+  <div class="wrap">
+    <h2>A verdade desconfortável que nenhum pediatra te contou</h2>
+    <p>Vou te fazer uma pergunta direta.</p>
+    <p>Quantas horas você passou ao lado do seu filho ontem?</p>
+    <p>Agora a pergunta que dói: <span class="destaque">quantos minutos você esteve com ele de verdade?</span> Sem celular na mão. Sem a cabeça na lista de tarefas. Sem responder no automático.</p>
+    <p>Se você travou nessa segunda pergunta, você acabou de encontrar o mecanismo invisível que está travando o desenvolvimento do seu filho.</p>
+    <p>O nome dele é <span class="destaque">Presença Parcial</span>.</p>
+    <p>Presença Parcial é quando o seu corpo está na sala, mas a sua atenção está no e-mail, na louça, na preocupação com a conta que vence amanhã. E aqui está o ponto que muda tudo:</p>
+    <p class="destaque" style="font-size:1.15rem;">Seu filho percebe. Sempre.</p>
+    <p>O cérebro infantil é uma máquina de detectar conexão. Quando a criança sente que não tem a sua atenção emocional, ela faz a única coisa que sabe fazer: ela testa, ela grita, ela faz birra, ela se agita. Não porque é "difícil". Mas porque está tentando se conectar com você do único jeito que consegue.</p>
+    <p>A birra que te esgota pode ser, na verdade, um pedido de socorro por conexão.</p>
+    <p>E tem mais. A ciência é brutal nesse ponto:</p>
+    <p>O cérebro do seu filho se organiza por <span class="destaque">espelhamento</span>. Mãe agitada e dispersa registra agitação. Mãe presente e regulada registra segurança. Ele não aprende com o que você fala. Ele aprende com o estado em que você está.</p>
+    <p>Um estudo da <span class="destaque">Universidade de Harvard</span> mostrou que a qualidade da atenção materna é o fator mais determinante do desenvolvimento emocional de uma criança. Mais que escolaridade. Mais que renda. Mais que a quantidade de brinquedos no quarto.</p>
+    <p>Esse mesmo campo de pesquisa revelou que micromomentos de conexão ativam as áreas cerebrais da linguagem, da empatia e da autorregulação. E o contrário também é verdade: <span class="destaque">quando a criança percebe que não tem a atenção emocional do adulto, o cérebro dela literalmente desliga o modo aprendizado.</span></p>
+    <p>Leia essa última frase de novo.</p>
+    <p>Você pode comprar o brinquedo educativo mais caro da loja. Pode matricular na melhor escolinha. Pode passar o dia inteiro no mesmo cômodo que seu filho.</p>
+    <p>Se a presença for parcial, <span class="destaque">brincadeira sem vínculo é só barulho.</span></p>
+    <p>E a ausência custa caro. Custa em fala atrasada. Custa em birras que não acabam. Custa em uma criança grudada na tela porque a tela, ao contrário de quase tudo, dá atenção total a ela.</p>
+    <p>Agora, antes que a culpa te engula, para.</p>
+    <p><span class="destaque">Isso não é culpa sua.</span> Ninguém te ensinou isso. Não tem aula de presença no pré-natal. Não tem manual de vínculo na maternidade. Você recebeu uma criança e uma lista infinita de obrigações, e ninguém te mostrou o que realmente importava.</p>
+    <p>A culpa paralisa. O que eu vou te entregar agora é o contrário dela: responsabilidade com um caminho claro. Porque a mesma ciência que explica o problema também entrega a solução. E ela é muito mais simples (e mais rápida) do que você imagina.</p>
+  </div>
+</section>
+
+<!-- VIRADA -->
+<section class="sec-creme">
+  <div class="wrap">
+    <h2>Você não precisa de mais tempo. Precisa de outra forma de estar presente.</h2>
+    <p>Deixa eu te apresentar a descoberta que muda o jogo:</p>
+    <p class="destaque" style="font-size:1.15rem;">5 minutos de presença total valem mais para o cérebro do seu filho do que 1 hora de presença distraída.</p>
+    <p>Não é frase de efeito. É neurociência. Aqueles micromomentos de conexão que Harvard estudou não exigem horas. Exigem intenção. Olho no olho. Corpo no chão. Atenção inteira, mesmo que por poucos minutos.</p>
+    <p>Pensa em uma planta.</p>
+    <p>Imagina que você rega essa planta em conta-gotas ao longo do dia inteiro. Uma gotinha aqui, outra ali, entre uma tarefa e outra. No fim do dia, você "regou" ela o dia todo... e ela continua seca. As gotas evaporam antes de chegar na raiz.</p>
+    <p>Agora imagina que você para tudo por 2 minutos e rega essa planta de verdade. Água chegando na raiz, encharcando a terra.</p>
+    <p class="destaque">Essa planta floresce.</p>
+    <p class="destaque" style="font-size:1.15rem;">Seu filho é essa planta.</p>
+    <p>Cada "hum, legal" distraído é uma gota que evapora. Cada momento de presença total, mesmo curto, é água na raiz: ativa linguagem, constrói segurança emocional, destrava o desenvolvimento que estava esperando por você.</p>
+    <p>A pergunta óbvia agora é: <span class="destaque">como fazer isso na prática, com a rotina que eu tenho?</span></p>
+    <p>Como transformar os poucos minutos que você tem em momentos que realmente chegam na raiz? O que fazer nesses minutos? Como brincar do jeito que o cérebro do seu filho precisa, na idade que ele tem, com o que você já tem em casa?</p>
+    <p>É exatamente isso que existe dentro de um método. Um código que ficou invisível por tempo demais.</p>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section>
+  <div class="wrap">
+    <h2>Apresento a você o Código Invisível da Infância</h2>
+    <p>O Código Invisível da Infância é o método proprietário criado por Maria Izabel da Rosa, terapeuta da infância e família com mais de 15 anos de clínica, que já transformou a realidade de mais de 2.000 famílias.</p>
+    <p>Ele se chama "invisível" por um motivo: tudo o que realmente destrava o desenvolvimento de uma criança acontece em um lugar que ninguém te ensinou a enxergar. Não está no brinquedo. Não está na atividade do Pinterest. Está na qualidade do vínculo que atravessa cada minuto que vocês passam juntos.</p>
+    <p>O método se sustenta em <span class="destaque">5 pilares</span>, que juntos formam a base completa do desenvolvimento infantil:</p>
+    <div class="pilares">
+      <div class="pilar"><div class="num">1</div><h3>Presença</h3><p>Como sair da presença parcial e entrar em conexão total em minutos, mesmo com a rotina cheia.</p></div>
+      <div class="pilar"><div class="num">2</div><h3>Vínculo</h3><p>Como construir a segurança emocional que é o solo de todo o desenvolvimento.</p></div>
+      <div class="pilar"><div class="num">3</div><h3>Regulação</h3><p>Como o seu estado emocional organiza (ou desorganiza) o cérebro do seu filho, e como usar isso a seu favor.</p></div>
+      <div class="pilar"><div class="num">4</div><h3>Brincar com Intenção</h3><p>O jeito certo de brincar para ativar linguagem, coordenação, empatia e autonomia em cada faixa etária.</p></div>
+      <div class="pilar"><div class="num">5</div><h3>Ritmo e Rotina</h3><p>Como transformar o dia a dia comum (banho, comida, trajeto) em oportunidades de desenvolvimento.</p></div>
+    </div>
+    <p>E para que você nunca se perca, você recebe a <span class="destaque">Mandala do Desenvolvimento Infantil Absoluto</span>: um mapa visual e prático que mostra, em uma única imagem, como os 5 pilares se conectam e onde o desenvolvimento do seu filho pode estar travado hoje. É o tipo de ferramenta que você cola na porta da geladeira e consulta em 10 segundos.</p>
+    <p class="destaque" style="font-size:1.1rem;">Não é mágica. É neurociência aplicada com amor.</p>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="sec-creme">
+  <div class="wrap">
+    <h2>Por dentro do Código: 5 módulos, 33 aulas, nenhuma enrolação</h2>
+    <p>Todas as aulas têm <span class="destaque">menos de 10 minutos</span>. Você assiste no intervalo do almoço, na fila da escola, com o celular na mão. São 4 horas de conteúdo total, desenhadas para mães que não têm tempo a perder.</p>
+
+    <div class="modulo">
+      <span class="tag">Módulo 1</span>
+      <h3>O Despertar da Presença</h3>
+      <p class="desc">Onde o destravamento começa (e onde você já sente resultado nos primeiros dias)</p>
+      <ul>
+        <li>O Ritual de Presença Consciente: o protocolo de minutos por dia que já fez uma criança parar de gritar e bater em menos de 3 dias (a história completa está mais abaixo nesta página)</li>
+        <li>O teste honesto da presença parcial: descubra em 2 minutos onde a sua atenção está vazando sem você perceber</li>
+        <li>Por que "largar o celular" não resolve nada se você não souber o que fazer no minuto seguinte</li>
+        <li>O sinal silencioso que seu filho emite quando sente sua ausência (quase toda mãe confunde com manha)</li>
+      </ul>
+    </div>
+
+    <div class="modulo">
+      <span class="tag">Módulo 2</span>
+      <h3>O Cérebro Que Espelha</h3>
+      <p class="desc">A neurociência do desenvolvimento traduzida para a vida real</p>
+      <ul>
+        <li>As 3 coisas que o cérebro do seu filho faz quando percebe sua atenção total (e a que ele desliga quando não percebe)</li>
+        <li>O que o estudo de Harvard descobriu sobre atenção materna, e por que isso desmonta a culpa de quem trabalha fora</li>
+        <li>Espelhamento na prática: como o seu estado emocional vira o estado emocional do seu filho, para o bem e para o mal</li>
+        <li>Por que a birra é comunicação, e o que seu filho está realmente tentando te dizer em cada tipo de crise</li>
+      </ul>
+    </div>
+
+    <div class="modulo">
+      <span class="tag">Módulo 3</span>
+      <h3>A Arte de Brincar com Intenção</h3>
+      <p class="desc">O jeito certo de brincar que destrava fala, movimento e emoção</p>
+      <ul>
+        <li>A diferença entre brincar "de corpo presente" e brincar do jeito que constrói cérebro</li>
+        <li>Por que deixar a criança escolher a brincadeira muda completamente o efeito dela no desenvolvimento</li>
+        <li>O que fazer (e o que nunca fazer) quando seu filho te chama para brincar e você está exausta</li>
+        <li>Brincadeiras de 5 minutos que ativam linguagem, empatia e autorregulação usando o que você já tem em casa</li>
+      </ul>
+    </div>
+
+    <div class="modulo">
+      <span class="tag">Módulo 4</span>
+      <h3>Destravando Cada Área</h3>
+      <p class="desc">Físico, emocional e cognitivo: o mapa por idade, de 0 a 6 anos</p>
+      <ul>
+        <li>O que esperar (de verdade) em cada fase de 0 a 6 anos, sem terrorismo e sem "cada criança tem seu tempo" genérico</li>
+        <li>Os sinais de que o desenvolvimento pede mais estímulo, e quando é hora de buscar avaliação profissional sem pânico</li>
+        <li>Como reduzir as telas sem guerra: a transição gradual que substitui a tela por conexão (em vez de deixar um vazio)</li>
+        <li>O caminho para a autonomia: como formar uma criança que brinca sozinha com segurança, porque se sente vista</li>
+      </ul>
+    </div>
+
+    <div class="modulo">
+      <span class="tag">Módulo 5</span>
+      <h3>O Código na Vida Real</h3>
+      <p class="desc">Rotina cheia, casa de verdade, mãe que trabalha: como sustentar tudo isso</p>
+      <ul>
+        <li>Como usar a Mandala do Desenvolvimento Infantil Absoluto para diagnosticar e ajustar a semana da sua família em 10 minutos</li>
+        <li>Micromomentos escondidos na rotina: banho, refeição e trajeto de carro virando ferramentas de desenvolvimento</li>
+        <li>O que fazer nos dias em que você falha (porque você vai falhar, e o método já conta com isso)</li>
+        <li>Como envolver pai, avós e cuidadores no Código sem precisar convencer ninguém com teoria</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FASCINAÇÕES -->
+<section>
+  <div class="wrap">
+    <h2>Dentro do Código, você também vai descobrir...</h2>
+    <ul class="fasc">
+      <li>Por que seu filho se comporta pior justamente com você (e por que isso é, na verdade, um bom sinal que quase todo mundo interpreta errado)</li>
+      <li>A pergunta de 5 palavras que acalma uma criança em crise mais rápido do que qualquer "para com isso"</li>
+      <li>O erro bem-intencionado que mães cometem ao brincar e que ensina a criança a depender de estímulo externo para tudo</li>
+      <li>Como saber, em minutos, se a agitação do seu filho é da idade ou é um pedido de conexão não atendido</li>
+      <li>O motivo real de a tela hipnotizar seu filho (não é o desenho, é o que a tela oferece que a rotina de vocês parou de oferecer)</li>
+      <li>Por que 5 minutos no chão valem mais que uma tarde inteira no parquinho com você olhando o celular</li>
+      <li>A janela de ouro do dia em que o cérebro do seu filho está mais aberto para conexão (e quase toda família desperdiça esse horário com pressa)</li>
+      <li>Como interromper, na sua geração, os padrões que você jurou não repetir da sua mãe (sem precisar de anos de terapia para começar)</li>
+      <li>O gesto simples antes de dormir que consolida no cérebro do seu filho tudo de bom que aconteceu no dia</li>
+      <li>Por que elogiar do jeito errado pode travar a autonomia, e as palavras exatas que constroem segurança de verdade</li>
+      <li>Como transformar o banho de 10 minutos no momento mais potente de vínculo do dia inteiro</li>
+      <li>O que fazer quando seu filho prefere a tela a brincar com você (sem drama, sem barganha, sem culpa)</li>
+      <li>A diferença entre a criança que obedece por medo e a que coopera por vínculo (e como migrar da primeira para a segunda)</li>
+      <li>Por que você não precisa ser uma mãe calma o tempo todo, e o que o conceito de reparação faz pelo cérebro do seu filho depois que você perde a paciência</li>
+      <li>Como identificar na Mandala, em uma olhada, qual dos 5 pilares está pedindo sua atenção nesta semana</li>
+    </ul>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO APRENDER O CÓDIGO INVISÍVEL DA INFÂNCIA</a>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="sec-creme">
+  <div class="wrap" style="text-align:center;">
+    <div class="bio-foto">MI</div>
+    <h2>Quem vai te guiar nessa jornada</h2>
+    <div style="text-align:left;">
+      <p><span class="destaque">Maria Izabel da Rosa</span> é terapeuta da infância e família, com mais de 15 anos de atendimento clínico dedicados a uma única missão: entender o que faz uma criança florescer e o que a trava.</p>
+      <p>Ao longo dessa jornada, ela integrou neurociência, neurodesenvolvimento, psicanálise e olhar sistêmico em um método próprio, e já acompanhou de perto a transformação de mais de 2.000 famílias. Sua formação em psicopedagogia clínica e institucional sustenta a base técnica de tudo o que ela ensina.</p>
+      <p>Mas o Código Invisível da Infância não nasceu em um consultório. Nasceu no chão da sala dela.</p>
+      <p>Um dia, Maria Izabel sentou no chão para brincar com a própria filha. No automático, pegou o celular. E ouviu a pergunta que mudou tudo:</p>
+      <p class="destaque" style="font-size:1.15rem;">"Mãe, você vai brincar comigo ou vai trabalhar de novo?"</p>
+      <p>Aquela frase a rasgou por dentro. Ali estava ela: a especialista em vínculo, a profissional que ensinava famílias a se conectar... perdendo o próprio vínculo dentro de casa.</p>
+      <p>Naquele dia, ela entendeu que o problema das mães modernas não é falta de amor, nem falta de informação, nem falta de esforço. É um código invisível que ninguém ensina. E decidiu que sua missão seria torná-lo visível para toda mãe que, como ela, ama profundamente e mesmo assim se sente falhando.</p>
+    </div>
+    <div class="citacao">"Quando a infância é vivida com presença, o futuro é construído com segurança."<span>Maria Izabel da Rosa · @mariaizabel.psico</span></div>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section>
+  <div class="wrap">
+    <h2>O que acontece quando uma mãe aprende a olhar para o lugar certo</h2>
+    <div class="caso">
+      <h3>O menino que "tinha preguiça de falar"</h3>
+      <p>Pedro tinha 2 anos. Passava horas no celular. Não atendia quando chamavam pelo nome. Tinha crises de choro intensas. E não falava.</p>
+      <p>Todo mundo em volta repetia a mesma coisa: "é preguiça de falar", "menino demora mesmo", "cada criança tem seu tempo".</p>
+      <p>Mas a mãe dele sentia, naquele lugar onde mãe sente, que algo estava errado. E ela estava certa. A avaliação identificou sinais de atraso no desenvolvimento.</p>
+      <p>O caminho não foi mágico: foi método. Estímulo adequado, reorganização da rotina e, no centro de tudo, a reconexão entre mãe e filho. Em menos de 2 meses, Pedro começou a imitar sons, buscar contato visual e brincar de forma funcional.</p>
+      <p>Hoje, aos 5 anos, Pedro é uma criança segura e curiosa. A intuição daquela mãe, somada ao conhecimento certo, mudou a trajetória de uma vida.</p>
+    </div>
+    <div class="caso">
+      <h3>A mãe que estava "o dia inteiro junto"</h3>
+      <p>Essa mãe passava o dia inteiro com o filho. O dia INTEIRO. E mesmo assim, ele gritava, batia, testava sem parar. Ela chegou exausta, se sentindo a pior mãe do mundo: "eu não saio do lado dele, como pode ser falta de atenção?"</p>
+      <p>Quando Maria Izabel destrinchou a rotina, o padrão apareceu: presença parcial constante. O corpo estava ali o tempo todo. A atenção, nunca.</p>
+      <p>A prescrição foi o Ritual de Presença Consciente, o mesmo que você recebe logo no Módulo 1: celular desligado, 5 minutos no chão, olho no olho, brincadeira escolhida pela criança.</p>
+      <p>Em menos de 3 dias, o menino parou de gritar. Começou a contar histórias. E passou a beijar o rosto da mãe espontaneamente.</p>
+      <p>Nada na rotina externa mudou. A quantidade de tempo era a mesma. O que mudou foi a qualidade de minutos que finalmente chegaram na raiz.</p>
+    </div>
+    <p class="disclaimer">Importante: cada criança e cada família têm sua história. Os casos acima ilustram o processo do método e não representam promessa de resultado idêntico. O Código é um programa educacional e não substitui avaliação ou acompanhamento profissional individual quando necessário.</p>
+  </div>
+</section>
+
+<!-- IMAGINE -->
+<section class="sec-verde">
+  <div class="wrap">
+    <h2>Agora imagina a sua casa daqui a 30 dias...</h2>
+    <ul class="imagine-lista">
+      <li>Seu filho brincando com autonomia, criatividade e segurança, sem pedir a tela a cada dez minutos.</li>
+      <li>Você sentando no chão por alguns minutos e sentindo, na resposta dele, que aqueles minutos chegaram na raiz.</li>
+      <li>A birra deixando de ser um mistério esgotante e virando uma mensagem que você sabe ler (e responder).</li>
+      <li>A culpa de madrugada dando lugar a uma certeza silenciosa: "eu sei o que estou fazendo".</li>
+      <li>E o vínculo entre vocês, aquele que parecia estar escapando, crescendo de volta. Dia após dia, rega após rega.</li>
+    </ul>
+    <p>Não é uma casa perfeita. É uma casa com código. E ela está a uma decisão de distância.</p>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="sec-creme" id="oferta">
+  <div class="wrap">
+    <h2>Tudo o que você recebe ao entrar hoje no Código</h2>
+    <div class="stack-item">
+      <h3>O Código para Destravar o Desenvolvimento Infantil</h3>
+      <p>5 módulos, 33 aulas objetivas de menos de 10 minutos, com o método completo dos 5 pilares.</p>
+      <p class="valor">Se essa jornada fosse conduzida em acompanhamento individual no consultório, ao longo de meses de sessões, o investimento facilmente ultrapassaria R$ 4.000.</p>
+    </div>
+    <div class="stack-item">
+      <h3>A Mandala do Desenvolvimento Infantil Absoluto</h3>
+      <p>O mapa visual do método para diagnosticar e ajustar o desenvolvimento do seu filho em uma olhada.</p>
+      <p class="valor">Ferramenta exclusiva do método, não existe à venda separadamente.</p>
+    </div>
+    <div class="stack-item">
+      <h3>O Ritual de Presença Consciente (já no Módulo 1)</h3>
+      <p>O protocolo prático que você aplica no primeiro dia e que pode gerar mudanças perceptíveis na primeira semana.</p>
+    </div>
+    <div class="stack-item bonus">
+      <h3>🎁 BÔNUS: Guia de Atividades para Destravar o Desenvolvimento Infantil</h3>
+      <p>Um banco de brincadeiras organizado por faixa etária (0 a 6 anos), por objetivo de desenvolvimento (fala, coordenação, emoção, autonomia) e por nível de conexão. Tudo usando o que você já tem em casa. Acabou o "não sei o que fazer com ele".</p>
+      <p class="valor">Sozinho, esse guia valeria o preço de um curso inteiro.</p>
+    </div>
+    <div class="preco-box">
+      <p class="de">Somando tudo, são bem mais de R$ 4.000 em conhecimento e ferramentas. Seu investimento hoje:</p>
+      <div class="parcela">12x de R$ 72,09</div>
+      <p class="avista">ou R$ 697,00 à vista</p>
+      <p class="contexto">Menos de R$ 2,40 por dia ao longo de um ano. Menos que um lanche na cantina da escola. Pelo conhecimento que muda a forma como seu filho cresce.</p>
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO AGORA</a>
+      <p class="btn-nota" style="color:var(--verde-s);">Compra 100% segura pela Hotmart · Acesso imediato após a confirmação do pagamento</p>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section>
+  <div class="wrap" style="text-align:center;">
+    <div class="selo"><span class="n">7</span><span class="t">dias de<br>garantia</span></div>
+    <h2>Garantia Presença Total: 7 dias de risco zero</h2>
+    <div style="text-align:left;">
+      <p>Funciona assim, sem letra miúda:</p>
+      <p>Entre no Código hoje. Assista às aulas. Aplique o Ritual de Presença Consciente do Módulo 1. Sente no chão com seu filho, olho no olho, e observe o que acontece.</p>
+      <p>Se em até 7 dias você sentir que o método não é para você, por qualquer motivo (ou por motivo nenhum), basta enviar um único e-mail e <span class="destaque">100% do seu dinheiro volta</span>. Sem perguntas, sem justificativa, sem constrangimento.</p>
+      <p>Você não precisa decidir agora se o Código funciona. Você só precisa decidir se merece uma semana para testar.</p>
+      <p class="destaque">O risco fica todo do nosso lado. Como deve ser.</p>
+    </div>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO TESTAR POR 7 DIAS SEM RISCO</a>
+    </div>
+  </div>
+</section>
+
+<!-- OBJEÇÕES -->
+<section class="sec-creme">
+  <div class="wrap">
+    <h2>"Eu queria muito... mas"</h2>
+    <details>
+      <summary>"Eu não tenho tempo nem para respirar. Como vou fazer um curso?"</summary>
+      <p>Essa objeção é exatamente o motivo pelo qual o Código existe. As aulas têm menos de 10 minutos: cabem na fila da escola, no intervalo do trabalho, antes de dormir. E o método em si foi desenhado para mães sem tempo: ele não pede horas, pede minutos com qualidade. Você não vai adicionar tarefas à sua rotina. Vai transformar as que já existem. Se você tem 5 minutos por dia, você tem o que o método precisa.</p>
+    </details>
+    <details>
+      <summary>"E se eu não der conta? Já tentei tanta coisa e não consegui aplicar."</summary>
+      <p>Você não conseguiu aplicar o que leu por aí porque recebeu teoria solta, sem sistema. O Código é diferente: é passo a passo, começa com um único ritual de minutos (não uma reforma da sua vida) e já conta com os seus dias ruins. Existe inclusive uma aula inteira sobre o que fazer quando você falhar. Você não precisa ser perfeita. Precisa de um mapa. É isso que a Mandala é.</p>
+    </details>
+    <details>
+      <summary>"Não tenho esse dinheiro agora."</summary>
+      <p>Em 12x de R$ 72,09, estamos falando de menos de R$ 2,40 por dia. Agora faz a conta inversa: quanto custa uma única sessão de terapia infantil? Quanto custam os brinquedos que prometem "estimular" e ficam esquecidos em duas semanas? A ausência custa caro. O conhecimento que resolve a causa custa menos que o que você já gasta tentando aliviar os sintomas. E com a garantia de 7 dias, o risco financeiro é zero.</p>
+    </details>
+    <details>
+      <summary>"Meu filho já tem 5, 6 anos. Será que não passou da fase?"</summary>
+      <p>Não passou. O cérebro infantil tem uma capacidade chamada neuroplasticidade: ele se reorganiza a partir de novas experiências, especialmente experiências de vínculo. Os primeiros anos são uma janela poderosa, e seu filho ainda está dentro dela. O pior erro seria usar o tempo que passou como desculpa para perder o tempo que ainda existe. Começar hoje é sempre melhor que começar nunca.</p>
+    </details>
+    <details>
+      <summary>"O caso do meu filho é muito grave. Um curso vai resolver?"</summary>
+      <p>Resposta honesta: o Código é um programa educacional, não é tratamento e não substitui avaliação profissional. Se o seu filho apresenta sinais importantes de atraso, o método te ajuda de duas formas: primeiro, te ensina a enxergar os sinais com clareza; segundo, constrói em casa a base de vínculo e estímulo que potencializa qualquer acompanhamento profissional. O Código não concorre com a avaliação especializada. Ele caminha junto.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>Para qual idade o método funciona?</summary>
+      <p>O Código foi desenvolvido para mães de crianças de 0 a 6 anos. O bônus de atividades é organizado exatamente por essas faixas etárias. Mães de crianças um pouco mais velhas também relatam benefícios nos pilares de presença e vínculo, que não têm idade.</p>
+    </details>
+    <details>
+      <summary>Por quanto tempo tenho acesso?</summary>
+      <p>Você terá acesso ao curso completo, incluindo o bônus, pelo período informado na página de compra da Hotmart, podendo assistir quantas vezes quiser, no seu ritmo.</p>
+    </details>
+    <details>
+      <summary>Quanto tempo por dia eu preciso dedicar?</summary>
+      <p>As aulas têm menos de 10 minutos cada. Na prática com seu filho, o método trabalha com micromomentos: o Ritual de Presença Consciente começa com 5 minutos por dia. É desenho de método para mãe que trabalha e tem rotina cheia.</p>
+    </details>
+    <details>
+      <summary>Em quanto tempo vejo resultado?</summary>
+      <p>Cada família tem seu ritmo e não existe promessa de prazo. Dito isso, o Ritual de Presença Consciente é entregue já no Módulo 1 justamente porque muitas mães percebem mudanças no comportamento e na conexão nos primeiros dias de prática.</p>
+    </details>
+    <details>
+      <summary>O curso substitui terapia, fonoaudiólogo ou avaliação profissional?</summary>
+      <p>Não. O Código é um programa educacional sobre desenvolvimento infantil, presença e vínculo. Ele não é tratamento, não faz diagnóstico e não substitui acompanhamento profissional individual. Se houver sinais importantes de atraso, procure avaliação especializada. O método, inclusive, te ajuda a reconhecer esses sinais mais cedo.</p>
+    </details>
+    <details>
+      <summary>Preciso comprar brinquedos ou materiais?</summary>
+      <p>Não. Esse é um dos princípios do método: o Guia de Atividades usa apenas o que você já tem em casa. O que destrava o desenvolvimento não é o brinquedo, é o vínculo dentro da brincadeira.</p>
+    </details>
+    <details>
+      <summary>O pai (ou avó, ou cuidador) pode assistir junto?</summary>
+      <p>Pode e deve. O Módulo 5 inclui uma aula específica sobre como envolver outros adultos da casa no método, sem precisar convencer ninguém com teoria.</p>
+    </details>
+    <details>
+      <summary>Como funciona a garantia?</summary>
+      <p>Você tem 7 dias, a contar da compra, para acessar tudo. Se decidir que não é para você, por qualquer motivo, basta solicitar o reembolso pela própria Hotmart ou por e-mail, e você recebe 100% do valor de volta.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec-verde">
+  <div class="wrap">
+    <h2>Daqui a um ano, seu filho estará um ano mais velho. A pergunta é: como?</h2>
+    <p>Existem dois caminhos saindo desta página.</p>
+    <p>No primeiro, você fecha essa aba e a vida segue. A rotina continua engolindo os dias. As gotinhas continuam evaporando antes de chegar na raiz. E daqui a um ano, você estará com as mesmas dúvidas, a mesma culpa apertando de madrugada, e um filho um ano mais crescido tendo recebido a mesma presença parcial.</p>
+    <p>No segundo, você entra no Código hoje. Amanhã, você desliga o celular, senta no chão por 5 minutos e olha nos olhos do seu filho de um jeito que talvez faça tempo que não acontece. E começa, minuto a minuto, a regar a raiz.</p>
+    <p>A infância do seu filho está acontecendo agora. Não na semana que vem, quando a rotina acalmar. Não nas férias. <span class="destaque">Agora. E a primeira infância não tem replay.</span></p>
+    <p>Você não precisa de mais tempo. Você precisa de outra forma de estar presente. E ela está a um clique de distância, com uma semana inteira de garantia para você testar sem nenhum risco.</p>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">SIM, QUERO DESTRAVAR O DESENVOLVIMENTO DO MEU FILHO</a>
+      <p class="btn-nota" style="color:var(--verde-s);">12x de R$ 72,09 ou R$ 697,00 à vista · Garantia Presença Total de 7 dias · Acesso imediato</p>
+    </div>
+    <div class="ps" style="background:rgba(255,255,255,0.06); color:var(--creme-e);">
+      <p><span class="destaque">P.S.</span> Se você rolou a página até aqui, deixa eu resumir: existe algo invisível travando o desenvolvimento do seu filho, e esse algo tem nome (Presença Parcial) e tem solução (micromomentos de conexão intencional, ensinados passo a passo no Código Invisível da Infância). São 33 aulas curtas, a Mandala do Desenvolvimento, o bônus com o banco de brincadeiras de 0 a 6 anos, e 7 dias de garantia incondicional. O risco é zero. A ausência, essa sim, custa caro.</p>
+      <p style="margin-bottom:0;"><span class="destaque">P.P.S.</span> Um dia, a filha de Maria Izabel perguntou: "Mãe, você vai brincar comigo ou vai trabalhar de novo?". Aquela pergunta doeu o suficiente para dar origem a um método que já alcançou mais de 2.000 famílias. Que a sua resposta, a partir de hoje, seja diferente da que ela conseguiu dar naquele dia. Seu filho está esperando. E 5 minutos de verdade podem começar a mudar tudo.</p>
+    </div>
+    <div class="btn-area">
+      <a class="btn" href="https://pay.hotmart.com/H100415402M">QUERO COMEÇAR HOJE</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Código para Destravar o Desenvolvimento Infantil · Maria Izabel da Rosa · @mariaizabel.psico</p>
+  <p>Este é um programa educacional sobre desenvolvimento infantil, presença e vínculo. Não constitui tratamento, diagnóstico ou aconselhamento clínico individual. Resultados variam de família para família.</p>
+  <p>Pagamento processado com segurança pela <a href="https://hotmart.com" rel="noopener">Hotmart</a>.</p>
+</footer>
+
+<div class="sticky-cta">
+  <a href="https://pay.hotmart.com/H100415402M">QUERO DESTRAVAR O DESENVOLVIMENTO · 12x R$ 72,09</a>
+</div>
+
+</body>
+</html>
